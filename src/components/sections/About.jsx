@@ -21,7 +21,7 @@ export default function About() {
   return (
     <section id="about" className="py-24">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center ">
           {/* Left Column: Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -37,7 +37,7 @@ export default function About() {
               We are a passionate team of developers and designers dedicated to building exceptional digital products. Our mission is to partner with visionaries like you to turn complex problems into elegant, user-friendly solutions. We believe in the power of technology to create a better future.
             </p>
             <div className="space-y-4">
-              <div className="flex items-start gap-4 group hover:shadow-[0_0_16px_cyan] hover:border-cyan-400/70 focus-within:shadow-[0_0_16px_cyan] focus-within:border-cyan-400/70 transition-all duration-300 bg-slate-900/60 border border-slate-800 rounded-2xl p-4">
+              <div className="flex items-start gap-4 group hover:shadow-[0_0_16px_cyan] hover:border-cyan-400/70 focus-within:shadow-[0_0_16px_cyan] focus-within:border-cyan-400/70 transition-all duration-300 bg-slate-900/60 border border-slate-800 rounded-2xl p-4 cursor-pointer">
                 <div className="bg-blue-500/10 p-2 rounded-full mt-1">
                   <Zap className="text-cyan-400" />
                 </div>
@@ -46,7 +46,7 @@ export default function About() {
                   <p className="text-blue-200/70">To craft high-quality software that is intuitive, efficient, and impactful.</p>
                 </div>
               </div>
-              <div className="flex items-start gap-4 group hover:shadow-[0_0_16px_cyan] hover:border-cyan-400/70 focus-within:shadow-[0_0_16px_cyan] focus-within:border-cyan-400/70 transition-all duration-300 bg-slate-900/60 border border-slate-800 rounded-2xl p-4">
+              <div className="flex items-start gap-4 group hover:shadow-[0_0_16px_cyan] hover:border-cyan-400/70 focus-within:shadow-[0_0_16px_cyan] focus-within:border-cyan-400/70 transition-all duration-300 bg-slate-900/60 border border-slate-800 rounded-2xl p-4 cursor-pointer">
                 <div className="bg-blue-500/10 p-2 rounded-full mt-1">
                   <Target className="text-cyan-400" />
                 </div>
@@ -70,7 +70,7 @@ export default function About() {
             <div className="relative">
               {/* Dashed line with gradient pulse */}
               <div className="absolute left-1/2 -translate-x-1/2 top-5 h-[calc(100%-2.5rem)] w-0.5 border-l-2 border-dashed border-slate-700 animate-gradient-pulse" />
-              <div className="space-y-12">
+              <div className="space-y-12 ">
                 {steps.map((step, index) => (
                   <motion.div
                     key={index}
@@ -80,7 +80,7 @@ export default function About() {
                     viewport={{ once: true, amount: 0.5 }}
                     variants={stepVariants}
                     tabIndex={0}
-                    className="flex items-center gap-6 relative group outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+                    className="flex items-center gap-6 relative group outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 cursor-pointer"
                   >
                     <div className="bg-slate-800 border-2 border-slate-700 group-hover:border-cyan-400/70 group-focus-visible:border-cyan-400/70 p-3 rounded-full z-10 transition-all duration-300">
                       {step.icon}

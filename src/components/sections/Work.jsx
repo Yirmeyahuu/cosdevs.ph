@@ -71,7 +71,7 @@ export default function Work() {
               key={index}
               variants={cardVariants}
               tabIndex={0}
-              className="bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 group hover:border-cyan-400/70 focus-visible:border-cyan-400/70 transition-all duration-300 hover:-translate-y-2 focus-visible:-translate-y-2 shadow-lg hover:shadow-cyan-400/20 focus-visible:shadow-cyan-400/20 relative outline-none"
+              className="bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 group hover:border-cyan-400/70 focus-visible:border-cyan-400/70 transition-all duration-300 hover:-translate-y-2 focus-visible:-translate-y-2 shadow-lg hover:shadow-cyan-400/20 focus-visible:shadow-cyan-400/20 relative outline-none cursor-pointer"
             >
               <div className="overflow-hidden h-56 relative">
                 <img

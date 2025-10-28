@@ -4,9 +4,9 @@ import { ArrowRight, Sparkles } from 'lucide-react'
 export default function Hero() {
   // Animate stats numbers
   const stats = [
-    { number: 50, label: 'Projects Completed', suffix: '+' },
-    { number: 30, label: 'Happy Clients', suffix: '+' },
-    { number: 5, label: 'Years Experience', suffix: '+' }
+    { number: 20, label: 'Projects Completed', suffix: '+' },
+    { number: 20, label: 'Happy Clients', suffix: '+' },
+    { number: 2, label: 'Years Experience', suffix: '+' }
   ]
   const statRefs = [useRef(), useRef(), useRef()]
 
@@ -51,7 +51,7 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto text-center">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-full border border-white/10 mb-8 hover:bg-white/10 hover:shadow-[0_0_16px_cyan] hover:scale-105 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
+        <div className="inline-flex items-center mt-8 gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-full border border-white/10 mb-8 hover:bg-white/10 hover:shadow-[0_0_16px_cyan] hover:scale-105 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
           <Sparkles size={16} className="text-cyan-400 animate-spin-slow" />
           <span className="text-sm text-blue-200/80 font-medium">Welcome to the future of development</span>
         </div>
@@ -76,7 +76,7 @@ export default function Hero() {
             onClick={scrollToContact}
             className="group relative px-8 py-4 bg-gradient-to-r from-blue-400 to-cyan-300 text-brandBlue-darkest rounded-2xl font-heading font-semibold overflow-hidden hover:scale-105 hover:shadow-[0_0_24px_cyan] transition-all duration-300 shadow-lg shadow-blue-500/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
           >
-            <span className="relative z-10 flex items-center gap-2">
+            <span className="relative z-10 flex items-center gap-2 cursor-pointer">
               Start Your Project
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
             </span>
@@ -86,24 +86,24 @@ export default function Hero() {
           
           <button 
             onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}
-            className="px-8 py-4 bg-white/5 backdrop-blur-sm text-white rounded-2xl font-heading font-semibold border border-white/10 hover:bg-white/10 hover:shadow-[0_0_16px_cyan] transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+            className="px-8 py-4 bg-white/5 backdrop-blur-sm text-white rounded-2xl font-heading font-semibold border border-white/10 hover:bg-white/10 hover:shadow-[0_0_16px_cyan] transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 cursor-pointer"
           >
             View Our Work
           </button>
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-3 gap-8 mt-20 max-w-3xl mx-auto">
+        <div className="grid grid-cols-3 gap-8 mt-20 mb-24 max-w-3xl mx-auto ">
           {stats.map((stat, index) => (
             <div key={index} className="group hover:scale-110 transition-transform duration-300">
-              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:bg-white/10 hover:shadow-[0_0_16px_cyan] transition-all duration-300">
+              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-4 md:p-6 border border-white/10 hover:bg-white/10 hover:shadow-[0_0_16px_cyan] transition-all duration-300 cursor-pointer">
                 <div
                   ref={statRefs[index]}
-                  className="font-heading text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent mb-2 transition-all duration-300"
+                  className="font-heading text-xl md:text-4xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent mb-2 transition-all duration-300"
                 >
                   {stat.number + stat.suffix}
                 </div>
-                <div className="text-sm text-blue-200/60">{stat.label}</div>
+                <div className="text-xs text-center md:text-sm text-blue-200/60">{stat.label}</div>
               </div>
             </div>
           ))}
@@ -111,7 +111,7 @@ export default function Hero() {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 animate-bounce">
         <div className="w-6 h-10 border-2 border-white/20 rounded-full flex items-start justify-center p-2 shadow-[0_0_16px_cyan] animate-pulse">
           <div className="w-1.5 h-3 bg-gradient-to-b from-blue-400 to-transparent rounded-full" />
         </div>

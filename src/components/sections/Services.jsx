@@ -68,7 +68,7 @@ export default function Services() {
 
         {/* Services Grid */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 "
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -79,7 +79,7 @@ export default function Services() {
               key={index}
               variants={cardVariants}
               tabIndex={0}
-              className="bg-slate-900 p-8 rounded-2xl border border-slate-800 hover:border-cyan-400/70 focus-visible:border-cyan-400/70 transition-all duration-300 group hover:-translate-y-2 focus-visible:-translate-y-2 shadow-lg hover:shadow-cyan-400/20 focus-visible:shadow-cyan-400/20 relative overflow-hidden outline-none"
+              className="bg-slate-900 p-8 rounded-2xl border border-slate-800 hover:border-cyan-400/70 focus-visible:border-cyan-400/70 transition-all duration-300 group hover:-translate-y-2 focus-visible:-translate-y-2 shadow-lg hover:shadow-cyan-400/20 focus-visible:shadow-cyan-400/20 relative overflow-hidden outline-none cursor-pointer"
             >
               {/* Gradient hover background */}
               <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 focus-visible:opacity-100 transition-all duration-300 bg-gradient-to-br from-cyan-400/10 via-blue-400/10 to-transparent rounded-2xl" />

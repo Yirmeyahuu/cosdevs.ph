@@ -52,7 +52,7 @@ export default function Contact() {
             </div>
             <button
               type="submit"
-              className="group relative w-full px-8 py-4 bg-gradient-to-r from-blue-400 to-cyan-300 text-brandBlue-darkest rounded-xl font-heading font-semibold overflow-hidden hover:scale-105 hover:shadow-[0_0_24px_cyan] transition-transform duration-300 shadow-lg shadow-blue-500/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+              className="group relative w-full px-8 py-4 bg-gradient-to-r from-blue-400 to-cyan-300 text-brandBlue-darkest rounded-xl font-heading font-semibold overflow-hidden hover:scale-105 hover:shadow-[0_0_24px_cyan] transition-transform duration-300 shadow-lg shadow-blue-500/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 cursor-pointer"
             >
               <span className="relative z-10 flex items-center justify-center gap-2">
                 Send Message <Send size={20} />
@@ -78,10 +78,10 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="space-y-8"
+            className="space-y-8 cursor-pointer"
           >
             <div className="flex items-center gap-4 group bg-slate-900/60 border border-slate-800 rounded-2xl p-6 hover:shadow-cyan-400/20 focus-within:shadow-cyan-400/20 transition-all duration-300">
-              <Mail className="w-8 h-8 text-cyan-400 group-hover:text-cyan-300 group-hover:drop-shadow-[0_0_8px_cyan] transition-all duration-300" />
+              <Mail className="w-8 h-8 text-cyan-400 group-hover:text-cyan-300 group-hover:drop-shadow-[0_0_8px_cyan] transition-all duration-300 " />
               <div>
                 <h3 className="text-lg font-semibold text-white">Email</h3>
                 <p className="text-blue-200/70">contact@cosdevs.com</p>
@@ -91,14 +91,14 @@ export default function Contact() {
               <Phone className="w-8 h-8 text-cyan-400 group-hover:text-cyan-300 group-hover:drop-shadow-[0_0_8px_cyan] transition-all duration-300" />
               <div>
                 <h3 className="text-lg font-semibold text-white">Phone</h3>
-                <p className="text-blue-200/70">+1 (555) 123-4567</p>
+                <p className="text-blue-200/70">(+63) 9085608811</p>
               </div>
             </div>
             <div className="flex items-center gap-4 group bg-slate-900/60 border border-slate-800 rounded-2xl p-6 hover:shadow-cyan-400/20 focus-within:shadow-cyan-400/20 transition-all duration-300">
               <MapPin className="w-8 h-8 text-cyan-400 group-hover:text-cyan-300 group-hover:drop-shadow-[0_0_8px_cyan] transition-all duration-300" />
               <div>
                 <h3 className="text-lg font-semibold text-white">Location</h3>
-                <p className="text-blue-200/70">Cebu, Philippines</p>
+                <p className="text-blue-200/70">Bacolod City, Negros Island, Philippines, 6100</p>
               </div>
             </div>
           </motion.div>

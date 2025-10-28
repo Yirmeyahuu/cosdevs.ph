@@ -62,17 +62,14 @@ export default function Navbar() {
             {/* Logo */}
             <button 
               onClick={() => scrollToSection('home')}
-              className="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+              className="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 h-14 overflow-hidden cursor-pointer"
             >
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-cyan-300 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-200 shadow-lg">
-                <span className="font-heading font-bold text-brandBlue-darkest text-lg">C</span>
-              </div>
-              <div>
-                <h1 className="font-heading text-xl font-bold tracking-wide bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
-                  COS Devs
-                </h1>
-                <p className="text-xs text-blue-300/70 font-sans hidden sm:block">Creative Solutions</p>
-              </div>
+              <img
+                src="/COSDEVSLOGOTEXT.webp"
+                alt="COS Devs Logo"
+                className="w-44 h-20 object-cover transition-transform duration-200 group-hover:scale-102"
+                style={{ objectPosition: 'center' }}
+              />
             </button>
 
             {/* Desktop Navigation */}
@@ -85,7 +82,7 @@ export default function Navbar() {
                   <li key={link.id}>
                     <button
                       onClick={() => scrollToSection(link.id)}
-                      className={`relative flex items-center gap-2 px-5 py-2.5 rounded-2xl font-heading transition-all duration-200 group focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400
+                      className={`relative flex items-center gap-2 px-5 py-2.5 rounded-2xl font-heading transition-all duration-200 cursor-pointer group focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400
                         ${
                           isActive
                             ? 'bg-white/10 text-white shadow-lg backdrop-blur-sm'
@@ -103,9 +100,9 @@ export default function Navbar() {
                       {/* Animated underline */}
                       <span
                         className={`absolute left-5 right-5 -bottom-1 h-0.5 rounded-full bg-cyan-400 transition-all duration-300
-                          ${isActive ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0 group-hover:opacity-80 group-hover:scale-x-100'}
+                          opacity-0 scale-x-0 group-hover:opacity-80 group-hover:scale-x-100
                         `}
-                      />
+                      ></span>
                       {isActive && (
                         <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse ml-2" />
                       )}
@@ -160,9 +157,9 @@ export default function Navbar() {
                       {/* Animated underline */}
                       <span
                         className={`absolute left-4 right-4 -bottom-1 h-0.5 rounded-full bg-cyan-400 transition-all duration-300
-                          ${isActive ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0 group-hover:opacity-80 group-hover:scale-x-100'}
+                          opacity-0 scale-x-0 group-hover:opacity-80 group-hover:scale-x-100
                         `}
-                      />
+                      ></span>
                       {isActive && (
                         <div className="ml-auto w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
                       )}
