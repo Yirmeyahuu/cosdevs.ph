@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brandBlue-darkest: #00152c;
+  --color-brandBlue-dark: #001f40;
+  --color-brandBlue-medium: #002853;
+  
+  --font-family-sans: Raleway, system-ui, sans-serif;
+  --font-family-heading: Poppins, system-ui, sans-serif;
+}
+
+body {
+  @apply bg-brandBlue-darkest;
+}
