@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaLaptopCode, FaMobileAlt, FaShieldAlt, FaPalette, FaCloud, FaUsers } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const services = [
   {
@@ -75,12 +76,12 @@ export default function ServicesPage() {
           <p className="text-blue-200/80 mb-6">
             Contact us for a free consultation and let’s build something amazing together!
           </p>
-          <a
-            href="/contact"
+          <Link
+            to="/contact"
             className="inline-block px-8 py-4 bg-cyan-400 text-brandBlue-darkest rounded-2xl font-heading font-semibold shadow-lg hover:scale-105 hover:shadow-cyan-400/30 transition-all duration-300"
           >
             Get Started
-          </a>
+          </Link>
         </div>
       </div>
       {/* Animations */}

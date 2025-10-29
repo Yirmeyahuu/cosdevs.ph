@@ -1,6 +1,8 @@
 import project1Img from '../assets/images/project1.webp';
 import project2Img from '../assets/images/project2.webp';
 import project3Img from '../assets/images/project3.webp';
+import { Link } from 'react-router-dom';
+
 
 const projects = [
   {
@@ -90,12 +92,12 @@ export default function WorkPage() {
           <p className="text-blue-200/80 mb-6">
             We’re passionate about turning ideas into reality. Let’s collaborate on your next project!
           </p>
-          <a
-            href="/contact"
+          <Link
+            to="/contact"
             className="inline-block px-8 py-4 bg-gradient-to-r from-blue-400 to-cyan-300 text-brandBlue-darkest rounded-2xl font-heading font-semibold shadow-lg hover:scale-105 hover:shadow-cyan-400/30 transition-all duration-300"
           >
             Contact Us
-          </a>
+          </Link>
         </div>
       </div>
 

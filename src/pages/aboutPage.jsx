@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import poypoyImg from '../assets/images/teamProfile/poypoy.png';
 import bayerImg from '../assets/images/teamProfile/bayer.png';
@@ -12,7 +13,7 @@ const teamMembers = [
   {
     id: 1,
     name: 'Jeremiah P. Pantaras',
-    nickname: 'The Visionary',
+    nickname: 'Poypoy',
     position: 'Founder · Lead Software Developer / Chief Operating Officer',
     mantra: '“Innovation is the key to progress.”',
     gradient: 'from-purple-500 via-pink-400 to-yellow-300',
@@ -21,7 +22,7 @@ const teamMembers = [
   {
     id: 2,
     name: 'Joseph Charles A. Roque',
-    nickname: 'The Guardian',
+    nickname: 'Rok',
     position: 'Co-founder · Cybersecurity Specialist / Quality Assurance / Networking (CISO)',
     mantra: '“Security is not a product, but a process.”',
     gradient: 'from-blue-600 via-cyan-400 to-green-300',
@@ -30,7 +31,7 @@ const teamMembers = [
   {
     id: 3,
     name: 'John Eric G. Bayer',
-    nickname: 'The Architect',
+    nickname: 'Bonbon',
     position: 'Co-founder · Full Stack Developer / System Analyst',
     mantra: '“Every system is a story waiting to be told.”',
     gradient: 'from-indigo-500 via-blue-400 to-cyan-300',
@@ -39,7 +40,7 @@ const teamMembers = [
   {
     id: 4,
     name: 'Wenard Roy F. Barrera',
-    nickname: 'The Artist',
+    nickname: 'Royroy',
     position: 'Co-founder · UI/UX Designer / Front End Developer',
     mantra: '“Design is intelligence made visible.”',
     gradient: 'from-pink-500 via-red-400 to-yellow-300',
@@ -48,7 +49,7 @@ const teamMembers = [
   {
     id: 5,
     name: 'Brian Steven G. Pajarillo',
-    nickname: 'The Creator',
+    nickname: 'Jhinwoo',
     position: 'Co-founder · Graphic Artist / Game Developer',
     mantra: '“Creativity takes courage.”',
     gradient: 'from-green-400 via-teal-400 to-blue-500',
@@ -57,7 +58,7 @@ const teamMembers = [
   {
     id: 6,
     name: 'John Michael P. Pantaras',
-    nickname: 'The Strategist',
+    nickname: 'Archael',
     position: 'Company Advisor · Business Strategist / Marketing Specialist',
     mantra: '“Strategy is about making choices.”',
     gradient: 'from-yellow-400 via-orange-400 to-red-500',
@@ -186,14 +187,14 @@ export default function AboutPage() {
         <div className="mt-12 text-center animate-fadeIn">
           <p className="text-blue-200/80 text-lg mb-4">
             Ready to start your next project? <br />
-            <span className="text-cyan-300 font-semibold">Contact us at <a href="mailto:jeremiahpantaras@gmail.com" className="underline">jeremiahpantaras@gmail.com</a></span>
+            <span className="text-cyan-300 font-semibold">Contact us at <a href="mailto:jeremiahpantaras@gmail.com" className="underline">contact@cosdevs.com</a></span>
           </p>
-          <a
-            href="/contact"
+          <Link
+            to="/contact"
             className="inline-block px-8 py-4 bg-gradient-to-r from-blue-400 to-cyan-300 text-brandBlue-darkest rounded-2xl font-heading font-semibold shadow-lg hover:scale-105 hover:shadow-cyan-400/30 transition-all duration-300"
           >
             Contact Us
-          </a>
+          </Link>
         </div>
       </div>
       {/* Animations */}
