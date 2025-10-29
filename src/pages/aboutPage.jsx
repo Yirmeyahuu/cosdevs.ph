@@ -89,13 +89,13 @@ export default function AboutPage() {
           <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-8 shadow-lg animate-fadeIn">
             <h2 className="text-2xl font-bold text-cyan-300 mb-4">Our Mission</h2>
             <p className="text-blue-200/70">
-              To empower our clients with cutting-edge technology, creative design, and reliable support, helping them achieve their goals and make a lasting impact in their industries.
+              To empower local businesses and small companies across Negros Island by delivering tailored, high-quality custom software solutions. We partner with our clients to simplify complex challenges, providing continuous development, maintenance, and support to ensure their digital success and sustainable growth.
             </p>
           </div>
           <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-8 shadow-lg animate-fadeIn">
             <h2 className="text-2xl font-bold text-cyan-300 mb-4">Our Vision</h2>
             <p className="text-blue-200/70">
-              To be recognized as a leading digital agency in Southeast Asia, known for our innovation, integrity, and client success.
+              To be the leading custom software development company by 2030 and the trusted, long-term digital transformation partner for small and medium enterprises across the Visayas. We envision a future where our custom software solutions are integral to our clients' efficiency and competitive edge, recognized for their impact, reliability, and our unwavering commitment to their ongoing success.
             </p>
           </div>
         </div>

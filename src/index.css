@@ -12,3 +12,8 @@
 body {
   @apply bg-brandBlue-darkest;
 }
+
+.blur-3xl {
+  filter: blur(40px);
+  -webkit-filter: blur(40px);
+}
