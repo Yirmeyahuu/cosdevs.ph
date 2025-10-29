@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react'
 import { ArrowRight, Sparkles } from 'lucide-react'
 
 export default function Hero() {
-  // Animate stats numbers
   const stats = [
     { number: 20, label: 'Projects Completed', suffix: '+' },
     { number: 20, label: 'Happy Clients', suffix: '+' },
@@ -49,61 +48,59 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto text-center">
+      <div className="relative z-10 max-w-5xl mx-auto text-center w-full">
         {/* Badge */}
-        <div className="inline-flex items-center mt-8 gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-full border border-white/10 mb-8 hover:bg-white/10 hover:shadow-[0_0_16px_cyan] hover:scale-105 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-full border border-white/10 mb-8 hover:bg-white/10 hover:shadow-[0_0_16px_rgba(34,211,238,0.3)] hover:scale-105 transition-all duration-300">
           <Sparkles size={16} className="text-cyan-400 animate-spin-slow" />
-          <span className="text-sm text-blue-200/80 font-medium">Welcome to the future of development</span>
+          <span className="text-sm text-blue-200/80 font-medium cursor-default">Welcome to the future of development</span>
         </div>
 
         {/* Main Heading */}
-        <h1 className="font-heading text-5xl md:text-6xl lg:text-8xl font-bold mb-6 leading-tight">
-          <span className="text-white">Transforming Ideas Into</span>
+        <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 cursor-default leading-tight px-4">
+          <span className="text-white">Your Vision, Built into</span>
           <br />
           <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-400 bg-clip-text text-transparent animate-gradient-text">
-            Digital Reality
+            Digital Reality.
           </span>
         </h1>
 
         {/* Subtitle */}
-        <p className="text-lg md:text-xl text-blue-200/80 mb-12 max-w-2xl mx-auto leading-relaxed">
-          We craft exceptional digital experiences that drive growth, engage users, and bring your vision to life with cutting-edge technology.
+        <p className="text-base md:text-lg lg:text-xl text-blue-200/80 mb-12 max-w-2xl mx-auto leading-relaxed px-4 cursor-default">
+          We build the custom software you need to move beyond manual processes, connect with your customers, and achieve real growth.
         </p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 px-4">
           <button 
             onClick={scrollToContact}
-            className="group relative px-8 py-4 bg-gradient-to-r from-blue-400 to-cyan-300 text-brandBlue-darkest rounded-2xl font-heading font-semibold overflow-hidden hover:scale-105 hover:shadow-[0_0_24px_cyan] transition-all duration-300 shadow-lg shadow-blue-500/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+            className="group relative px-8 py-4 bg-gradient-to-r from-blue-400 to-cyan-300 text-brandBlue-darkest rounded-2xl font-heading font-semibold overflow-hidden hover:scale-105 hover:shadow-[0_0_24px_rgba(34,211,238,0.5)] transition-all duration-300 shadow-lg shadow-blue-500/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 w-full sm:w-auto"
           >
-            <span className="relative z-10 flex items-center gap-2 cursor-pointer">
+            <span className="relative z-10 flex items-center justify-center gap-2 cursor-pointer">
               Start Your Project
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
             </span>
-            {/* Ripple effect */}
-            <span className="absolute inset-0 pointer-events-none group-active:animate-ripple bg-cyan-300/20 rounded-2xl" />
           </button>
           
           <button 
             onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}
-            className="px-8 py-4 bg-white/5 backdrop-blur-sm text-white rounded-2xl font-heading font-semibold border border-white/10 hover:bg-white/10 hover:shadow-[0_0_16px_cyan] transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 cursor-pointer"
+            className="px-8 py-4 bg-white/5 backdrop-blur-sm text-white rounded-2xl font-heading font-semibold border border-white/10 hover:bg-white/10 hover:shadow-[0_0_16px_rgba(34,211,238,0.3)] transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 w-full sm:w-auto cursor-pointer"
           >
             View Our Work
           </button>
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-3 gap-8 mt-20 mb-24 max-w-3xl mx-auto ">
+        <div className="grid grid-cols-3 gap-4 md:gap-8 mt-16 mb-20 max-w-3xl mx-auto px-4">
           {stats.map((stat, index) => (
             <div key={index} className="group hover:scale-110 transition-transform duration-300">
-              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-4 md:p-6 border border-white/10 hover:bg-white/10 hover:shadow-[0_0_16px_cyan] transition-all duration-300 cursor-pointer">
+              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-4 md:p-6 border border-white/10 hover:bg-white/10 hover:shadow-[0_0_16px_rgba(34,211,238,0.3)] transition-all duration-300 cursor-pointer">
                 <div
                   ref={statRefs[index]}
-                  className="font-heading text-xl md:text-4xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent mb-2 transition-all duration-300"
+                  className="font-heading text-2xl md:text-4xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent mb-2"
                 >
                   {stat.number + stat.suffix}
                 </div>
-                <div className="text-xs text-center md:text-sm text-blue-200/60">{stat.label}</div>
+                <div className="text-xs md:text-sm text-blue-200/60">{stat.label}</div>
               </div>
             </div>
           ))}
@@ -111,8 +108,8 @@ export default function Hero() {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-white/20 rounded-full flex items-start justify-center p-2 shadow-[0_0_16px_cyan] animate-pulse">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <div className="w-6 h-10 border-2 border-white/20 rounded-full flex items-start justify-center p-2 shadow-[0_0_16px_rgba(34,211,238,0.3)] animate-pulse">
           <div className="w-1.5 h-3 bg-gradient-to-b from-blue-400 to-transparent rounded-full" />
         </div>
       </div>
@@ -146,13 +143,6 @@ export default function Hero() {
         }
         @keyframes spin {
           100% { transform: rotate(360deg); }
-        }
-        .group-active\\:animate-ripple:active {
-          animation: ripple 0.4s linear;
-        }
-        @keyframes ripple {
-          0% { opacity: 0.5; }
-          100% { opacity: 0; }
         }
       `}</style>
     </section>

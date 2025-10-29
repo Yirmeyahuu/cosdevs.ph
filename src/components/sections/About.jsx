@@ -1,108 +1,254 @@
-import { Zap, Target, Search, PenTool, Rocket, Code2 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { useState } from 'react'
+import { Zap, Target, Search, Users, Rocket } from 'lucide-react'
 
 export default function About() {
-  const steps = [
-    { icon: <Search className="group-hover:text-cyan-300 group-hover:drop-shadow-[0_0_8px_cyan] transition-all duration-300" />, title: '1. Discovery' },
-    { icon: <PenTool className="group-hover:text-cyan-300 group-hover:drop-shadow-[0_0_8px_cyan] transition-all duration-300" />, title: '2. Design' },
-    { icon: <Code2 className="group-hover:text-cyan-300 group-hover:drop-shadow-[0_0_8px_cyan] transition-all duration-300" />, title: '3. Develop' },
-    { icon: <Rocket className="group-hover:text-cyan-300 group-hover:drop-shadow-[0_0_8px_cyan] transition-all duration-300" />, title: '4. Deploy' },
-  ];
+  const [activeStep, setActiveStep] = useState(0)
 
-  const stepVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: (i) => ({
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, delay: i * 0.15 }
-    })
-  };
+  const steps = [
+    { 
+      icon: Search, 
+      number: '01',
+      title: 'Discovery and Strategy',
+      description: 'We dive deep into understanding your vision, goals, and challenges to create a tailored roadmap for success.',
+      features: ['Requirement Analysis', 'Market Research', 'Strategic Planning']
+    },
+    { 
+      icon: Users, 
+      number: '02',
+      title: 'Custom Development and Partnership',
+      description: 'Our expert team brings your ideas to life with cutting-edge technology and collaborative development.',
+      features: ['Agile Development', 'Regular Updates', 'Quality Assurance']
+    },
+    { 
+      icon: Rocket, 
+      number: '03',
+      title: 'Launch and Ongoing Support',
+      description: 'We ensure a smooth launch and provide continuous support to keep your product running at peak performance.',
+      features: ['Deployment', '24/7 Monitoring', 'Maintenance & Updates']
+    },
+  ]
 
   return (
-    <section id="about" className="py-24">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center ">
-          {/* Left Column: Text Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.7 }}
-          >
-            <h2 className="text-4xl font-heading font-bold text-white mb-2 inline-block relative">
-              About COS Devs
-              <span className="block h-1 w-24 mx-auto mt-2 bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-400 rounded-full" />
-            </h2>
-            <p className="text-lg text-blue-200/80 mb-6">
-              We are a passionate team of developers and designers dedicated to building exceptional digital products. Our mission is to partner with visionaries like you to turn complex problems into elegant, user-friendly solutions. We believe in the power of technology to create a better future.
-            </p>
+    <section id="about" className="min-h-screen py-20 px-6 relative overflow-hidden">
+      {/* Animated Background */}
+      <div className="absolute top-1/4 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse pointer-events-none" />
+      
+      <div className="relative z-10 max-w-7xl mx-auto w-full">
+        {/* Section Header */}
+        <div className="text-center mb-16 cursor-default">
+          <div className="inline-block px-4 py-2 bg-white/5 backdrop-blur-sm rounded-full border border-white/10 mb-6">
+            <span className="text-sm text-cyan-400 font-medium">WHO WE ARE</span>
+          </div>
+          <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+            About COS Devs
+          </h2>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
+          {/* Left Content */}
+          <div>
+            <h3 className="font-heading text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 leading-tight cursor-default">
+              We are a <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">passionate team</span> dedicated to building exceptional digital products
+            </h3>
+            
+            {/* Mission & Vision */}
             <div className="space-y-4">
-              <div className="flex items-start gap-4 group hover:shadow-[0_0_16px_cyan] hover:border-cyan-400/70 focus-within:shadow-[0_0_16px_cyan] focus-within:border-cyan-400/70 transition-all duration-300 bg-slate-900/60 border border-slate-800 rounded-2xl p-4 cursor-pointer">
-                <div className="bg-blue-500/10 p-2 rounded-full mt-1">
-                  <Zap className="text-cyan-400" />
+              <div className="flex items-start gap-4 group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 hover:bg-white/10 hover:shadow-[0_0_16px_rgba(34,211,238,0.3)] transition-all duration-300 cursor-pointer">
+                <div className="bg-blue-500/10 p-2 rounded-full mt-1 flex-shrink-0">
+                  <Zap className="text-cyan-400" size={24} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-white">Our Mission</h3>
-                  <p className="text-blue-200/70">To craft high-quality software that is intuitive, efficient, and impactful.</p>
+                  <h4 className="font-bold text-white mb-1">Our Mission</h4>
+                  <p className="text-sm md:text-base text-blue-200/70">To empower local businesses and small companies across Negros Island by delivering tailored, high-quality custom software solutions. We partner with our clients to simplify complex challenges, providing continuous development, maintenance, and support to ensure their digital success and sustainable growth.</p>
                 </div>
               </div>
-              <div className="flex items-start gap-4 group hover:shadow-[0_0_16px_cyan] hover:border-cyan-400/70 focus-within:shadow-[0_0_16px_cyan] focus-within:border-cyan-400/70 transition-all duration-300 bg-slate-900/60 border border-slate-800 rounded-2xl p-4 cursor-pointer">
-                <div className="bg-blue-500/10 p-2 rounded-full mt-1">
-                  <Target className="text-cyan-400" />
+              <div className="flex items-start gap-4 group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 hover:bg-white/10 hover:shadow-[0_0_16px_rgba(34,211,238,0.3)] transition-all duration-300 cursor-pointer">
+                <div className="bg-blue-500/10 p-2 rounded-full mt-1 flex-shrink-0">
+                  <Target className="text-cyan-400" size={24} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-white">Our Vision</h3>
-                  <p className="text-blue-200/70">To be a leading partner in digital innovation, recognized for our commitment to excellence and client success.</p>
+                  <h4 className="font-bold text-white mb-1">Our Vision</h4>
+                  <p className="text-sm md:text-base text-blue-200/70">To be the leading custom software development company by 2030 and the trusted, long-term digital transformation partner for small and medium enterprises across the Visayas. We envision a future where our custom software solutions are integral to our clients' efficiency and competitive edge, recognized for their impact, reliability, and our unwavering commitment to their ongoing success.</p>
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
-          {/* Right Column: Our Process */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="bg-slate-900 p-8 rounded-2xl border border-slate-800"
-          >
-            <h3 className="text-2xl font-heading font-bold text-center text-white mb-8">Our Streamlined Process</h3>
-            <div className="relative">
-              {/* Dashed line with gradient pulse */}
-              <div className="absolute left-1/2 -translate-x-1/2 top-5 h-[calc(100%-2.5rem)] w-0.5 border-l-2 border-dashed border-slate-700 animate-gradient-pulse" />
-              <div className="space-y-12 ">
-                {steps.map((step, index) => (
-                  <motion.div
-                    key={index}
-                    custom={index}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.5 }}
-                    variants={stepVariants}
-                    tabIndex={0}
-                    className="flex items-center gap-6 relative group outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 cursor-pointer"
-                  >
-                    <div className="bg-slate-800 border-2 border-slate-700 group-hover:border-cyan-400/70 group-focus-visible:border-cyan-400/70 p-3 rounded-full z-10 transition-all duration-300">
-                      {step.icon}
+          {/* Right Content - Interactive Process */}
+          <div className="bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm p-6 md:p-8 rounded-3xl border border-white/10 shadow-xl h-full">
+            <h3 className="text-xl md:text-2xl font-heading font-bold text-center text-white mb-8">
+              Our Streamlined Process
+            </h3>
+            
+            {/* Desktop View - Vertical Timeline */}
+            <div className="hidden md:block relative">
+              {/* Animated Progress Line */}
+              <div className="absolute left-[30px] top-[80px] bottom-[80px] w-0.5 bg-slate-700/50" />
+              <div 
+                className="absolute left-[30px] top-[72px] w-0.5 bg-gradient-to-b from-cyan-400 to-blue-400 transition-all duration-700 ease-out"
+                style={{ height: `calc(${(activeStep / (steps.length - 1)) * 50}% - 0px)` }}
+              />
+              
+              <div className="space-y-6">
+                {steps.map((step, index) => {
+                  const Icon = step.icon
+                  const isActive = activeStep === index
+                  const isPast = index < activeStep
+                  
+                  return (
+                    <div
+                      key={index}
+                      onClick={() => setActiveStep(index)}
+                      tabIndex={0}
+                      className="relative group cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-2xl transition-all duration-300"
+                    >
+                      <div className={`flex items-start gap-6 p-4 rounded-2xl transition-all duration-300 ${
+                        isActive ? ' shadow-[0_0_24px_rgba(34,211,238,0.3)]' : 'hover:bg-white/5'
+                      }`}>
+                        {/* Icon Circle */}
+                        <div className={`relative flex-shrink-0 w-[60px] h-[60px] rounded-2xl flex items-center justify-center z-10 transition-all duration-300 ${
+                          isActive || isPast
+                            ? 'bg-gradient-to-br from-cyan-400 to-blue-400 shadow-[0_0_20px_rgba(34,211,238,0.5)]'
+                            : 'bg-brandBlue-dark border-2 border-slate-700 group-hover:border-cyan-400/50'
+                        }`}>
+                          <Icon 
+                            className={`transition-all duration-300 ${
+                              isActive || isPast ? 'text-brandBlue-darkest scale-110' : 'text-cyan-400 group-hover:text-cyan-300'
+                            }`} 
+                            size={28} 
+                          />
+                          {/* Step Number Badge */}
+                          <div className={`absolute -top-2 -right-2 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300 ${
+                            isActive || isPast
+                              ? 'bg-cyan-400 text-brandBlue-darkest'
+                              : 'bg-slate-700 text-cyan-400'
+                          }`}>
+                            {step.number}
+                          </div>
+                        </div>
+
+                        {/* Content */}
+                        <div className="flex-1 pt-1">
+                          <h4 className={`font-heading text-lg md:text-xl font-bold mb-2 transition-colors duration-300 ${
+                            isActive ? 'text-cyan-300' : 'text-white group-hover:text-cyan-400'
+                          }`}>
+                            {step.title}
+                          </h4>
+                          
+                          {/* Expandable Description */}
+                          <div className={`overflow-hidden transition-all duration-500 ${
+                            isActive ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                          }`}>
+                            <p className="text-sm text-blue-200/80 mb-4 leading-relaxed">
+                              {step.description}
+                            </p>
+                            <div className="flex flex-wrap gap-2">
+                              {step.features.map((feature, i) => (
+                                <span
+                                  key={i}
+                                  className="px-3 py-1 bg-cyan-500/10 text-cyan-300 text-xs font-medium rounded-full border border-cyan-400/20"
+                                >
+                                  {feature}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <span className="font-semibold text-lg text-white">{step.title}</span>
-                  </motion.div>
+                  )
+                })}
+              </div>
+            </div>
+
+            {/* Mobile View - Card Swiper */}
+            <div className="md:hidden">
+              <div className="space-y-4">
+                {steps.map((step, index) => {
+                  const Icon = step.icon
+                  const isActive = activeStep === index
+                  
+                  return (
+                    <div
+                      key={index}
+                      onClick={() => setActiveStep(index)}
+                      className={`relative p-5 rounded-2xl border-2 transition-all duration-300 cursor-pointer ${
+                        isActive 
+                          ? 'bg-white/10 border-cyan-400/70 shadow-[0_0_24px_rgba(34,211,238,0.3)]'
+                          : 'bg-white/5 border-white/10 hover:border-cyan-400/30'
+                      }`}
+                    >
+                      {/* Header */}
+                      <div className="flex items-center gap-4 mb-3">
+                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 ${
+                          isActive
+                            ? 'bg-gradient-to-br from-cyan-400 to-blue-400'
+                            : 'bg-brandBlue-dark'
+                        }`}>
+                          <Icon 
+                            className={isActive ? 'text-brandBlue-darkest' : 'text-cyan-400'} 
+                            size={24} 
+                          />
+                        </div>
+                        <div className="flex-1">
+                          <div className="text-xs text-cyan-400 font-semibold mb-1">STEP {step.number}</div>
+                          <h4 className={`font-heading text-base font-bold transition-colors duration-300 ${
+                            isActive ? 'text-cyan-300' : 'text-white'
+                          }`}>
+                            {step.title}
+                          </h4>
+                        </div>
+                      </div>
+
+                      {/* Expandable Content */}
+                      <div className={`overflow-hidden transition-all duration-500 ${
+                        isActive ? 'max-h-96 opacity-100 mt-3' : 'max-h-0 opacity-0'
+                      }`}>
+                        <p className="text-sm text-blue-200/80 mb-3 leading-relaxed">
+                          {step.description}
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {step.features.map((feature, i) => (
+                            <span
+                              key={i}
+                              className="px-2.5 py-1 bg-cyan-500/10 text-cyan-300 text-xs font-medium rounded-full border border-cyan-400/20"
+                            >
+                              {feature}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Expand Indicator */}
+                      <div className={`mt-3 text-center text-xs text-cyan-400 transition-all duration-300 ${
+                        isActive ? 'opacity-0' : 'opacity-60'
+                      }`}>
+                        Tap to expand
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+
+              {/* Progress Dots */}
+              <div className="flex justify-center gap-2 mt-6">
+                {steps.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setActiveStep(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      activeStep === index
+                        ? 'w-8 bg-gradient-to-r from-cyan-400 to-blue-400'
+                        : 'bg-slate-600 hover:bg-slate-500'
+                    }`}
+                    aria-label={`Go to step ${index + 1}`}
+                  />
                 ))}
               </div>
             </div>
-            {/* Custom Animations */}
-            <style>{`
-              .animate-gradient-pulse {
-                animation: gradientPulse 2s infinite alternate;
-              }
-              @keyframes gradientPulse {
-                0% { border-color: #334155; }
-                100% { border-color: #22d3ee; }
-              }
-            `}</style>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
-  );
+  )
 }
