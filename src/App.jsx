@@ -1,6 +1,6 @@
 import Navbar from './components/layout/Navbar'
 import Home from './pages/Home'
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
   return (
