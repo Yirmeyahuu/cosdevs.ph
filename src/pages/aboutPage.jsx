@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { FaBriefcase, FaExternalLinkAlt } from 'react-icons/fa';
 
 import poypoyImg from '../assets/images/teamProfile/poypoy.png';
 import bayerImg from '../assets/images/teamProfile/bayer.png';
@@ -14,63 +15,106 @@ const teamMembers = [
     id: 1,
     name: 'Jeremiah P. Pantaras',
     nickname: 'Poypoy',
-    position: 'Founder · Lead Software Developer / Chief Operating Officer',
-    mantra: '“Innovation is the key to progress.”',
+    position: 'Founder · Junior Software Engineer · Full Stack Developer',
+    mantra: '"Innovation is the key to progress."',
     gradient: 'from-purple-500 via-pink-400 to-yellow-300',
     image: poypoyImg,
+    portfolio: {
+      url: 'https://jeremiahpantaras.vercel.app/',
+      projects: 15,
+      experience: '5+ years',
+      specialty: 'Full-Stack Development'
+    }
   },
   {
     id: 2,
     name: 'Joseph Charles A. Roque',
     nickname: 'Rok',
-    position: 'Co-founder · Cybersecurity Specialist / Quality Assurance / Networking (CISO)',
-    mantra: '“Security is not a product, but a process.”',
+    position: 'Co-founder · Cybersecurity Specialist · Quality Assurance · Cloud Engineer',
+    mantra: '"Security is not a product, but a process."',
     gradient: 'from-blue-600 via-cyan-400 to-green-300',
     image: roqueImg,
+    portfolio: {
+      url: 'https://josephroque.dev',
+      projects: 12,
+      experience: '4+ years',
+      specialty: 'Cybersecurity & QA'
+    }
   },
   {
     id: 3,
     name: 'John Eric G. Bayer',
     nickname: 'Bonbon',
-    position: 'Co-founder · Full Stack Developer / System Analyst',
-    mantra: '“Every system is a story waiting to be told.”',
+    position: 'Co-founder · Full Stack Developer · System Analyst',
+    mantra: '"Every system is a story waiting to be told."',
     gradient: 'from-indigo-500 via-blue-400 to-cyan-300',
     image: bayerImg,
+    portfolio: {
+      url: 'https://johnbayer.dev',
+      projects: 18,
+      experience: '6+ years',
+      specialty: 'System Architecture'
+    }
   },
   {
     id: 4,
     name: 'Wenard Roy F. Barrera',
     nickname: 'Royroy',
-    position: 'Co-founder · UI/UX Designer / Front End Developer',
-    mantra: '“Design is intelligence made visible.”',
+    position: 'Co-founder · UI/UX Designer · Front End Developer',
+    mantra: '"Design is intelligence made visible."',
     gradient: 'from-pink-500 via-red-400 to-yellow-300',
     image: wenardImg,
+    portfolio: {
+      url: 'https://wenardbarrera.dev',
+      projects: 20,
+      experience: '5+ years',
+      specialty: 'UI/UX Design'
+    }
   },
   {
     id: 5,
     name: 'Brian Steven G. Pajarillo',
     nickname: 'Jhinwoo',
-    position: 'Co-founder · Graphic Artist / Game Developer',
-    mantra: '“Creativity takes courage.”',
+    position: 'Co-founder · Graphic Artist · Game Developer',
+    mantra: '"Creativity takes courage."',
     gradient: 'from-green-400 via-teal-400 to-blue-500',
     image: jhinwooImg,
+    portfolio: {
+      url: 'https://brianpajarillo.dev',
+      projects: 10,
+      experience: '3+ years',
+      specialty: 'Game Development'
+    }
   },
   {
     id: 6,
     name: 'John Michael P. Pantaras',
     nickname: 'Archael',
-    position: 'Company Advisor · Business Strategist / Marketing Specialist',
-    mantra: '“Strategy is about making choices.”',
+    position: 'Co-founder · Company Advisor · Business Strategist',
+    mantra: '"Strategy is about making choices."',
     gradient: 'from-yellow-400 via-orange-400 to-red-500',
     image: johnImg,
+    portfolio: {
+      url: 'https://johnpantaras.dev',
+      projects: 25,
+      experience: '8+ years',
+      specialty: 'Business Strategy'
+    }
   },
 ];
 
 export default function AboutPage() {
   const [hoveredCard, setHoveredCard] = useState(null);
+  const [flippedCard, setFlippedCard] = useState(null);
+
+  const handleCardClick = (id) => {
+    setFlippedCard(flippedCard === id ? null : id);
+  };
+
   return (
     <section className="min-h-screen py-20 px-4 md:px-6 bg-gradient-to-br from-brandBlue-darkest via-brandBlue-dark to-cyan-900">
       <div className="max-w-7xl mx-auto w-full">
+        {/* ...existing code... */}
         {/* Animated Section Header */}
         <div className="text-center mb-16">
           <div className="inline-block px-4 py-2 bg-white/5 backdrop-blur-sm rounded-full border border-white/10 mb-6 animate-fadeIn">
@@ -120,7 +164,7 @@ export default function AboutPage() {
             {teamMembers.map((member, index) => (
               <div
                 key={member.id}
-                className="group relative"
+                className="group relative perspective"
                 style={{
                   animation: `float ${3 + index * 0.5}s ease-in-out infinite`,
                   animationDelay: `${index * 0.2}s`
@@ -128,54 +172,97 @@ export default function AboutPage() {
                 onMouseEnter={() => setHoveredCard(member.id)}
                 onMouseLeave={() => setHoveredCard(null)}
               >
-                {/* Card */}
-                <div className="relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-lg rounded-2xl p-6 border border-gray-700/50 transition-all duration-500 hover:scale-105 hover:border-purple-500/50 hover:shadow-2xl hover:shadow-purple-500/20">
-                  {/* Glow effect on hover */}
-                  <div className={`absolute inset-0 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-2xl blur-xl transition-opacity duration-500 ${hoveredCard === member.id ? 'opacity-100' : 'opacity-0'}`}></div>
+                {/* Card Container with 3D flip */}
+                <div
+                  className={`relative w-full h-[440px] transition-transform duration-700 preserve-3d cursor-pointer ${
+                    flippedCard === member.id ? 'rotate-y-180' : ''
+                  }`}
+                  onClick={() => handleCardClick(member.id)}
+                >
+                  {/* Front Side */}
+                  <div className="absolute inset-0 backface-hidden">
+                    <div className="relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-lg rounded-2xl p-6 border border-gray-700/50 transition-all duration-500 hover:scale-105 hover:border-purple-500/50 hover:shadow-2xl hover:shadow-purple-500/20 h-full">
+                      {/* Glow effect on hover */}
+                      <div className={`absolute inset-0 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-2xl blur-xl transition-opacity duration-500 ${hoveredCard === member.id ? 'opacity-100' : 'opacity-0'}`}></div>
+                      
+                      <div className="relative z-10">
+                        {/* Profile Image */}
+                        <div className="relative mb-6 mx-auto w-32 h-32 mt-10">
+                          {/* Spinning rounded background */}
+                          <div className={`absolute inset-0 bg-gradient-to-r ${member.gradient} rounded-full animate-spin-slow border-4 border-white z-10`}></div>
+                          {/* Floating particles */}
+                          <div className="absolute inset-0 pointer-events-none z-10">
+                            <span className="absolute w-3 h-3 bg-white/40 rounded-full left-6 top-8 animate-particle1"></span>
+                            <span className="absolute w-2 h-2 bg-white/30 rounded-full left-16 top-4 animate-particle2"></span>
+                            <span className="absolute w-1.5 h-1.5 bg-white/20 rounded-full left-20 top-16 animate-particle3"></span>
+                            <span className="absolute w-2.5 h-2.5 bg-white/30 rounded-full left-10 top-20 animate-particle4"></span>
+                          </div>
+                          {/* PNG image overlapping the background */}
+                          <img
+                            src={member.image}
+                            alt={member.name}
+                            className="absolute left-1/2 top-1/2 w-48 h-48 -translate-x-1/2 -translate-y-1/2 object-cover transition-transform duration-500 group-hover:scale-110 z-30"
+                            style={{ zIndex: 10 }}
+                          />
+                        </div>
                   
-                  <div className="relative z-10">
-                    {/* Profile Image */}
-                    <div className="relative mb-6 mx-auto w-32 h-32 -mt-10 ">
-                      {/* Spinning rounded background */}
-                      <div className={`absolute inset-0 bg-gradient-to-r ${member.gradient} rounded-full animate-spin-slow border-4 border-white z-10`}></div>
-                      {/* Floating particles */}
-                      <div className="absolute inset-0 pointer-events-none z-10">
-                        <span className="absolute w-3 h-3 bg-white/40 rounded-full left-6 top-8 animate-particle1"></span>
-                        <span className="absolute w-2 h-2 bg-white/30 rounded-full left-16 top-4 animate-particle2"></span>
-                        <span className="absolute w-1.5 h-1.5 bg-white/20 rounded-full left-20 top-16 animate-particle3"></span>
-                        <span className="absolute w-2.5 h-2.5 bg-white/30 rounded-full left-10 top-20 animate-particle4"></span>
+                        {/* Name */}
+                        <h3 className="text-2xl font-bold mb-2 text-center bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                          {member.name}
+                        </h3>
+                  
+                        {/* Nickname */}
+                        <p className="text-sm text-purple-400 text-center mb-3 font-semibold italic">
+                          "{member.nickname}"
+                        </p>
+                  
+                        {/* Position */}
+                        <p className="text-sm text-gray-400 text-center mb-4 font-medium">
+                          {member.position}
+                        </p>
+                  
+                        {/* Divider */}
+                        <div className="w-16 h-px bg-gradient-to-r from-transparent via-purple-500 to-transparent mx-auto mb-4"></div>
+                  
+                        {/* Mantra */}
+                        <p className="text-xs text-gray-400 text-center italic leading-relaxed">
+                          {member.mantra}
+                        </p>
                       </div>
-                      {/* PNG image overlapping the background */}
-                      <img
-                        src={member.image}
-                        alt={member.name}
-                        className="absolute left-1/2 top-1/2 w-48 h-48 -translate-x-1/2 -translate-y-1/2 object-cover rounded-full transition-transform duration-500 group-hover:scale-110 z-30"
-                        style={{ zIndex: 30 }}
-                      />
+                  
+                      {/* Hover Text Overlay - Moved to bottom to have higher z-index */}
+                      <div className={`absolute inset-0 flex items-center justify-center bg-black/60 backdrop-blur-sm rounded-2xl transition-opacity duration-300 z-999 ${hoveredCard === member.id && flippedCard !== member.id ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+                        <p className="text-white text-lg font-semibold tracking-wide">Tap to reveal Portfolio</p>
+                      </div>
                     </div>
-        
-                    {/* Name */}
-                    <h3 className="text-2xl font-bold mb-2 text-center bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-                      {member.name}
-                    </h3>
-        
-                    {/* Nickname */}
-                    <p className="text-sm text-purple-400 text-center mb-3 font-semibold italic">
-                      "{member.nickname}"
-                    </p>
-        
-                    {/* Position */}
-                    <p className="text-sm text-gray-400 text-center mb-4 font-medium">
-                      {member.position}
-                    </p>
-        
-                    {/* Divider */}
-                    <div className="w-16 h-px bg-gradient-to-r from-transparent via-purple-500 to-transparent mx-auto mb-4"></div>
-        
-                    {/* Mantra */}
-                    <p className="text-xs text-gray-400 text-center italic leading-relaxed">
-                      {member.mantra}
-                    </p>
+                  </div>
+
+                  {/* Back Side - Portfolio */}
+                  <div className="absolute inset-0 backface-hidden rotate-y-180">
+                    <div className="relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-lg rounded-2xl p-6 border border-gray-700/50 h-full flex flex-col items-center justify-center">
+                      <div className={`absolute inset-0 bg-gradient-to-r ${member.gradient} opacity-10 rounded-2xl`}></div>
+                      
+                      <div className="relative z-10 w-full flex flex-col items-center justify-center h-full">
+                        {/* Portfolio Icon */}
+                        <div className="relative mb-2 w-20 h-20">
+                          <div className={`w-full h-full bg-gradient-to-r ${member.gradient} rounded-full flex items-center justify-center shadow-lg`}>
+                            <FaBriefcase className="text-3xl text-white" />
+                          </div>
+                        </div>
+                        {/* View Portfolio Button */}
+                        <a
+                          href={member.portfolio.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-6 px-8 py-3 bg-white/10 hover:bg-white/20 text-white rounded-lg transition-all duration-300 hover:scale-105 border border-white/20"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          View Portfolio
+                        </a>
+                  
+                        <p className="text-xs text-center text-gray-400 italic mt-8">Tap to go back</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -209,10 +296,6 @@ export default function AboutPage() {
           to { opacity: 1; transform: translateY(0);}
         }
         .animate-slideDown { animation: slideDown 0.7s cubic-bezier(.4,0,.2,1) both; }
-      `}</style>
-
-      {/* Animations */}
-      <style>{`
         @keyframes float {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(-12px); }
@@ -230,16 +313,12 @@ export default function AboutPage() {
         .animate-particle3 { animation: particle3 2s infinite; }
         @keyframes particle4 { 0%,100%{opacity:1;} 50%{opacity:0.15;} }
         .animate-particle4 { animation: particle4 2.8s infinite; }
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(20px);}
-          to { opacity: 1; transform: translateY(0);}
-        }
-        .animate-fadeIn { animation: fadeIn 0.7s cubic-bezier(.4,0,.2,1) both; }
-        @keyframes slideDown {
-          from { opacity: 0; transform: translateY(-40px);}
-          to { opacity: 1; transform: translateY(0);}
-        }
-        .animate-slideDown { animation: slideDown 0.7s cubic-bezier(.4,0,.2,1) both; }
+        
+        /* 3D Flip Styles */
+        .perspective { perspective: 1000px; }
+        .preserve-3d { transform-style: preserve-3d; }
+        .backface-hidden { backface-visibility: hidden; }
+        .rotate-y-180 { transform: rotateY(180deg); }
       `}</style>
     </section>
   );

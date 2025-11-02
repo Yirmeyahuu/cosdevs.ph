@@ -96,8 +96,8 @@ export default function Navbar() {
   return (
     <>
       {/* Fixed Floating Navbar */}
-      <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-[100] w-[calc(100%-2rem)] max-w-7xl">
-        <div className="bg-gradient-to-r from-brandBlue-darkest/95 to-brandBlue-dark/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/10">
+      <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-100 w-[calc(100%-2rem)] max-w-7xl">
+        <div className="bg-linear-to-r from-brandBlue-darkest/95 to-brandBlue-dark/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/10">
           <div className="px-6 py-4">
             <div className="flex items-center justify-between">
               {/* Logo */}
