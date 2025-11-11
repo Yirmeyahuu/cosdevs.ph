@@ -21,8 +21,8 @@ const teamMembers = [
     image: poypoyImg,
     portfolio: {
       url: 'https://jeremiahpantaras.vercel.app/',
-      projects: 15,
-      experience: '5+ years',
+      projects: 10,
+      experience: '4+ years',
       specialty: 'Full-Stack Development'
     }
   },
@@ -35,9 +35,9 @@ const teamMembers = [
     gradient: 'from-blue-600 via-cyan-400 to-green-300',
     image: roqueImg,
     portfolio: {
-      url: 'https://josephroque.dev',
-      projects: 12,
-      experience: '4+ years',
+      url: 'https://caelum-psi.vercel.app/',
+      projects: 6,
+      experience: '5+ years',
       specialty: 'Cybersecurity & QA'
     }
   },
@@ -52,7 +52,7 @@ const teamMembers = [
     portfolio: {
       url: 'https://johnbayer.dev',
       projects: 18,
-      experience: '6+ years',
+      experience: '2+ years',
       specialty: 'System Architecture'
     }
   },
@@ -65,9 +65,9 @@ const teamMembers = [
     gradient: 'from-pink-500 via-red-400 to-yellow-300',
     image: wenardImg,
     portfolio: {
-      url: 'https://wenardbarrera.dev',
-      projects: 20,
-      experience: '5+ years',
+      url: '#',
+      projects: 3,
+      experience: '3+ years',
       specialty: 'UI/UX Design'
     }
   },
@@ -80,9 +80,9 @@ const teamMembers = [
     gradient: 'from-green-400 via-teal-400 to-blue-500',
     image: jhinwooImg,
     portfolio: {
-      url: 'https://brianpajarillo.dev',
+      url: '#',
       projects: 10,
-      experience: '3+ years',
+      experience: '5+ years',
       specialty: 'Game Development'
     }
   },
@@ -95,9 +95,9 @@ const teamMembers = [
     gradient: 'from-yellow-400 via-orange-400 to-red-500',
     image: johnImg,
     portfolio: {
-      url: 'https://johnpantaras.dev',
-      projects: 25,
-      experience: '8+ years',
+      url: '#',
+      projects: 15,
+      experience: '5+ years',
       specialty: 'Business Strategy'
     }
   },
