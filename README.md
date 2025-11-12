@@ -8,7 +8,7 @@ We craft digital solutions that transform ideas into reality, blending creativit
 ## ✨ Live Demo
 
 > **Experience the future of development:**  
-> _Modern, intuitive, and interactive UI/UX.  
+> Modern, intuitive, and interactive UI/UX.  
 > Responsive, fast, and visually stunning._
 
 ---
