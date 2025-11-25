@@ -8,6 +8,7 @@ import roqueImg from '../assets/images/teamProfile/roque.png';
 import wenardImg from '../assets/images/teamProfile/wenard.png';
 import jhinwooImg from '../assets/images/teamProfile/jhinwoo.png';
 import johnImg from '../assets/images/teamProfile/john.png';
+import mahinayImg from '../assets/images/teamProfile/kenken.png';
 
 
 const teamMembers = [
@@ -43,6 +44,21 @@ const teamMembers = [
   },
   {
     id: 3,
+    name: 'Krishnan V. Mahinay',
+    nickname: 'kinkin',
+    position: 'Co-founder · Cybersecurity Specialist · Quality Assurance',
+    mantra: '"Security is not a product, but a process."',
+    gradient: 'from-red-600 via-rose-400 to-red-300',
+    image: mahinayImg,
+    portfolio: {
+      url: 'https://kenken.vercel.app/',
+      projects: 6,
+      experience: '4+ years',
+      specialty: 'Cybersecurity & QA'
+    }
+  },
+  {
+    id: 4,
     name: 'John Eric G. Bayer',
     nickname: 'Bonbon',
     position: 'Co-founder · Full Stack Developer · System Analyst',
@@ -57,7 +73,7 @@ const teamMembers = [
     }
   },
   {
-    id: 4,
+    id: 5,
     name: 'Wenard Roy F. Barrera',
     nickname: 'Royroy',
     position: 'Co-founder · UI/UX Designer · Front End Developer',
@@ -72,7 +88,7 @@ const teamMembers = [
     }
   },
   {
-    id: 5,
+    id: 6,
     name: 'Brian Steven G. Pajarillo',
     nickname: 'Jhinwoo',
     position: 'Co-founder · Graphic Artist · Game Developer',
@@ -87,7 +103,7 @@ const teamMembers = [
     }
   },
   {
-    id: 6,
+    id: 7,
     name: 'John Michael P. Pantaras',
     nickname: 'Archael',
     position: 'Co-founder · Company Advisor · Business Strategist',

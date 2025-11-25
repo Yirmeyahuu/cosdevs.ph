@@ -181,7 +181,7 @@ export default function Contact() {
               <div>
                 <h3 className="text-lg font-heading font-semibold text-white mb-1">Email</h3>
                 <a 
-                  href="mailto:contact@cosdevs.com"
+                  href="mailto:cosdevsph@outlook.ph"
                   className="text-sm md:text-base text-blue-200/70 hover:text-cyan-400 transition-colors duration-200"
                 >
                   contact@cosdevs.com
