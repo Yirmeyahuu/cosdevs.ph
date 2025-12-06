@@ -255,16 +255,22 @@ export default function AboutPage() {
 
                   {/* Back Side - Portfolio */}
                   <div className="absolute inset-0 backface-hidden rotate-y-180">
-                    <div className="relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-lg rounded-2xl p-6 border border-gray-700/50 h-full flex flex-col items-center justify-center">
-                      <div className={`absolute inset-0 bg-gradient-to-r ${member.gradient} opacity-10 rounded-2xl`}></div>
+                    <div className="relative bg-linear-to-br from-gray-900 to-gray-900 backdrop-blur-lg rounded-2xl p-6 border border-gray-700/50 h-full flex flex-col items-center justify-center">
+                      <div className={`absolute inset-0 bg-linear-to-r ${member.gradient} opacity-10 rounded-2xl`}></div>
                       
                       <div className="relative z-10 w-full flex flex-col items-center justify-center h-full">
                         {/* Portfolio Icon */}
-                        <div className="relative mb-2 w-20 h-20">
-                          <div className={`w-full h-full bg-gradient-to-r ${member.gradient} rounded-full flex items-center justify-center shadow-lg`}>
+                        <div className="relative mb-8 w-20 h-20">
+                          <div className={`w-full h-full bg-linear-to-r ${member.gradient} rounded-full flex items-center justify-center shadow-lg`}>
                             <FaBriefcase className="text-3xl text-white" />
                           </div>
                         </div>
+                  
+                        {/* Main Text */}
+                        <h3 className="text-3xl font-bold text-center text-white mb-4 px-4">
+                          Visit {member.nickname}'s Portfolio
+                        </h3>
+                  
                         {/* View Portfolio Button */}
                         <a
                           href={member.portfolio.url}
