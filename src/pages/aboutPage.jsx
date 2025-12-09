@@ -214,11 +214,11 @@ export default function AboutPage() {
                         <div className="flex-1 flex flex-col">
                           {/* Name & Nickname */}
                           <div className="mb-3">
-                            <h3 className="text-xl font-bold text-white mb-1">
+                            <h3 className="text-2xl font-bold text-white mb-1">
                               {member.nickname},
                             </h3>
-                            <h4 className="text-lg font-semibold text-white">
-                              {member.name.split(' ')[0]} {member.name.split(' ')[member.name.split(' ').length - 1]}
+                            <h4 className="text-lg font-medium text-white">
+                              {member.name}
                             </h4>
                           </div>
                           
