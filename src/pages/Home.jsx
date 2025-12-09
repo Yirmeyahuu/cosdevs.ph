@@ -7,7 +7,7 @@ import Footer from '../components/layout/Footer'
 
 export default function Home() {
   return (
-    <main className="animate-pageFadeIn">
+    <main className="animate-pageFadeIn overflow-x-hidden">
       <Hero />
       <Services />
       <About />

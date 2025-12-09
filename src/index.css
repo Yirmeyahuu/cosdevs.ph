@@ -12,6 +12,11 @@
 body {
   @apply bg-brandBlue-darkest;
   font-family: "Fustat", system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+#root {
+  overflow-x: hidden;
 }
 
 .font-heading {

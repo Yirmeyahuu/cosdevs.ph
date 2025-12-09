@@ -16,11 +16,19 @@ const ScrollReveal = ({
     amount: 0.3 
   });
 
+  // Reduced distance for mobile to prevent horizontal scroll
+  const getDistance = () => {
+    const isMobile = window.innerWidth < 768;
+    return isMobile ? 30 : 60; // Smaller distance on mobile
+  };
+
+  const distance = getDistance();
+
   const directions = {
-    up: { y: 60, x: 0 },
-    down: { y: -60, x: 0 },
-    left: { y: 0, x: 60 },
-    right: { y: 0, x: -60 }
+    up: { y: distance, x: 0 },
+    down: { y: -distance, x: 0 },
+    left: { y: 0, x: distance },
+    right: { y: 0, x: -distance }
   };
 
   return (
