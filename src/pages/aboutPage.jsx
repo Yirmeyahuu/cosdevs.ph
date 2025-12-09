@@ -16,14 +16,14 @@ const teamMembers = [
     id: 1,
     name: 'Jeremiah P. Pantaras',
     nickname: 'Poypoy',
-    position: 'Founder · Junior Software Engineer · Full Stack Developer',
+    position: 'Founder · Software Engineer · Full Stack Developer',
     mantra: '"Innovation is the key to progress."',
     gradient: 'from-purple-500 via-pink-400 to-yellow-300',
     image: poypoyImg,
     portfolio: {
       url: 'https://jeremiahpantaras.vercel.app/',
       projects: 10,
-      experience: '4+ years',
+      experience: '5+ years',
       specialty: 'Full-Stack Development'
     }
   },
