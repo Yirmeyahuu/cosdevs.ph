@@ -209,9 +209,6 @@ export default function Navbar() {
           </div>
         </div>
       </nav>
-
-      {/* Spacer */}
-      <div className="h-28" />
     </>
   )
 }

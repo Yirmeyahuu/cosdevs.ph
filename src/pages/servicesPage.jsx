@@ -37,7 +37,7 @@ const services = [
 
 export default function ServicesPage() {
   return (
-    <section className="min-h-screen py-20 px-4 md:px-6 bg-gradient-to-br from-brandBlue-darkest via-brandBlue-dark to-cyan-900">
+    <section className="min-h-screen py-20 pt-40 px-4 md:px-6 bg-gradient-to-br from-brandBlue-darkest via-brandBlue-dark to-cyan-900">
       <div className="max-w-7xl mx-auto w-full animate-pageFadeIn">
         {/* Header */}
         <div className="text-center mb-16">

@@ -1,11 +1,14 @@
 import { useEffect, useRef } from 'react'
 import { ArrowRight, Sparkles } from 'lucide-react'
+import { motion as Motion } from 'motion/react'
+import BlurText from '../ui/BlurText'
+import ShinyText from '../ui/ShinyText'
 
 export default function Hero() {
   const stats = [
-    { number: 20, label: 'Projects Completed', suffix: '+' },
+    { number: 150, label: 'Projects Completed', suffix: '+' },
     { number: 20, label: 'Happy Clients', suffix: '+' },
-    { number: 2, label: 'Years Experience', suffix: '+' }
+    { number: 5, label: 'Years Experience', suffix: '+' }
   ]
   const statRefs = [useRef(), useRef(), useRef()]
 
@@ -25,92 +28,89 @@ export default function Hero() {
             requestAnimationFrame(animate)
           }
         }
-        animate()
+        // Delay the stats animation to start after text animations
+        setTimeout(animate, 1200)
       }
     })
   }, [])
 
-  const scrollToContact = () => {
-    const element = document.getElementById('contact')
-    if (element) {
-      const navbarHeight = 100
-      const offsetTop = element.offsetTop - navbarHeight
-      window.scrollTo({ top: offsetTop, behavior: 'smooth' })
-    }
-  }
-
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center px-6 overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-blue-500/30 via-cyan-400/20 to-blue-400/10 rounded-full blur-3xl animate-blob" />
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-tr from-cyan-500/30 via-blue-400/20 to-cyan-400/10 rounded-full blur-3xl animate-blob2" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto text-center w-full">
-        {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-full border border-white/10 mb-8 hover:bg-white/10 hover:shadow-[0_0_16px_rgba(34,211,238,0.3)] hover:scale-105 transition-all duration-300">
-          <Sparkles size={16} className="text-cyan-400 animate-spin-slow" />
-          <span className="text-sm text-blue-200/80 font-medium cursor-default">Welcome to the future of development</span>
-        </div>
-
-        {/* Main Heading */}
-        <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 cursor-default leading-tight px-4">
-          <span className="text-white">Your Vision, Built into</span>
-          <br />
-          <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-400 bg-clip-text text-transparent animate-gradient-text">
-            Digital Reality.
-          </span>
-        </h1>
-
-        {/* Subtitle */}
-        <p className="text-base md:text-lg lg:text-xl text-blue-200/80 mb-12 max-w-2xl mx-auto leading-relaxed px-4 cursor-default">
-          We build the custom software you need to move beyond manual processes, connect with your customers, and achieve real growth.
-        </p>
-
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 px-4">
-          <button 
-            onClick={scrollToContact}
-            className="group relative px-8 py-4 bg-gradient-to-r from-blue-400 to-cyan-300 text-brandBlue-darkest rounded-2xl font-heading font-semibold overflow-hidden hover:scale-105 hover:shadow-[0_0_24px_rgba(34,211,238,0.5)] transition-all duration-300 shadow-lg shadow-blue-500/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 w-full sm:w-auto"
+      {/* Main Container */}
+      <div className="relative z-10 max-w-7xl mx-auto w-full">
+        {/* Single Column - Left Aligned Content */}
+        <div className="max-w-4xl space-y-8">
+          {/* Badge */}
+          <Motion.div 
+            initial={{ opacity: 0, scale: 1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.5 }}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-full border border-white/10 hover:bg-white/10 hover:shadow-[0_0_16px_rgba(34,211,238,0.3)] hover:scale-105 transition-all duration-300"
           >
-            <span className="relative z-10 flex items-center justify-center gap-2 cursor-pointer">
-              Start Your Project
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
-            </span>
-          </button>
-          
-          <button 
-            onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}
-            className="px-8 py-4 bg-white/5 backdrop-blur-sm text-white rounded-2xl font-heading font-semibold border border-white/10 hover:bg-white/10 hover:shadow-[0_0_16px_rgba(34,211,238,0.3)] transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 w-full sm:w-auto cursor-pointer"
-          >
-            View Our Work
-          </button>
-        </div>
+            <Sparkles size={16} className="text-cyan-400 animate-spin-slow" />
+            <ShinyText 
+              text="City of Smiles Developers" 
+              disabled={false} 
+              speed={3} 
+              className="text-xs md:text-sm font-medium cursor-default"
+            />
+          </Motion.div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-3 gap-4 md:gap-8 mt-16 mb-20 max-w-3xl mx-auto px-4">
-          {stats.map((stat, index) => (
-            <div key={index} className="group hover:scale-110 transition-transform duration-300">
-              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-4 md:p-6 border border-white/10 hover:bg-white/10 hover:shadow-[0_0_16px_rgba(34,211,238,0.3)] transition-all duration-300 cursor-pointer">
-                <div
-                  ref={statRefs[index]}
-                  className="font-heading text-2xl md:text-4xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent mb-2"
-                >
-                  {stat.number + stat.suffix}
+          {/* Main Heading */}
+          <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold cursor-default leading-tight">
+            <BlurText
+              text="Your Vision, Built into"
+              delay={50}
+              animateBy="words"
+              direction="top"
+              className="text-white block mb-2"
+            />
+            <BlurText
+              text="Digital Reality."
+              delay={50}
+              animateBy="words"
+              direction="top"
+              className="bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-400 bg-clip-text text-transparent animate-gradient-text block"
+            />
+          </h1>
+
+          {/* Subtitle */}
+          <BlurText
+            text="We build the custom software you need to move beyond manual processes, connect with your customers, and achieve real growth."
+            delay={30}
+            animateBy="words"
+            direction="top"
+            className="text-sm md:text-lg text-blue-200/80 leading-relaxed cursor-default max-w-2xl"
+          />
+
+          {/* Stats */}
+          <div className="grid grid-cols-3 gap-4 pt-6 max-w-3xl">
+            {stats.map((stat, index) => (
+              <Motion.div 
+                key={index} 
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 1 + (index * 0.1) }}
+                className="group hover:scale-102 transition-transform duration-300"
+              >
+                <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-4 border border-white/10 hover:bg-white/10 hover:shadow-[0_0_16px_rgba(34,211,238,0.3)] transition-all duration-300 cursor-pointer">
+                  <div
+                    ref={statRefs[index]}
+                    className="font-heading text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent mb-2"
+                  >
+                    {stat.number + stat.suffix}
+                  </div>
+                  <div className="text-xs text-blue-200/60">{stat.label}</div>
                 </div>
-                <div className="text-xs md:text-sm text-blue-200/60">{stat.label}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-white/20 rounded-full flex items-start justify-center p-2 shadow-[0_0_16px_rgba(34,211,238,0.3)] animate-pulse">
-          <div className="w-1.5 h-3 bg-gradient-to-b from-blue-400 to-transparent rounded-full" />
+              </Motion.div>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -143,6 +143,14 @@ export default function Hero() {
         }
         @keyframes spin {
           100% { transform: rotate(360deg); }
+        }
+        @keyframes shine {
+          0% {
+            background-position: 200% center;
+          }
+          100% {
+            background-position: -200% center;
+          }
         }
       `}</style>
     </section>

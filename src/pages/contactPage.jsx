@@ -38,7 +38,7 @@ export default function ContactPage() {
   return (
     <section
       id="contact"
-      className="min-h-screen bg-gradient-to-br from-brandBlue-darkest via-brandBlue-dark to-cyan-900 py-12 px-4 sm:px-6 lg:px-8 flex items-center animate-pageFadeIn"
+      className="min-h-screen pt-40 bg-gradient-to-br from-brandBlue-darkest via-brandBlue-dark to-cyan-900 py-12 px-4 sm:px-6 lg:px-8 flex items-center animate-pageFadeIn"
     >
       <div className="max-w-6xl w-full mx-auto">
         {/* Header */}

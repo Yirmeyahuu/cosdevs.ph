@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { Send, Mail, Phone, MapPin, CheckCircle, AlertCircle } from 'lucide-react'
+import ShinyText from '../ui/ShinyText'
+import ScrollReveal from '../ui/ScrollReveal'
 
 export default function Contact() {
-  const [status, setStatus] = useState('idle') // idle, submitting, success, error
+  const [status, setStatus] = useState('idle')
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -23,7 +25,6 @@ export default function Contact() {
       if (response.ok) {
         setStatus('success')
         form.reset()
-        // Reset status after 5 seconds
         setTimeout(() => setStatus('idle'), 5000)
       } else {
         setStatus('error')
@@ -39,24 +40,26 @@ export default function Contact() {
     <section id="contact" className="min-h-screen py-20 px-6 relative">
       <div className="max-w-7xl mx-auto w-full">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="inline-block px-4 py-2 bg-white/5 backdrop-blur-sm rounded-full border border-white/10 mb-6">
-            <span className="text-sm text-cyan-400 font-medium">GET IN TOUCH</span>
+        <ScrollReveal direction="up" delay={0.1}>
+          <div className="text-center mb-16">
+            <h2 className="font-heading text-4xl md:text-5xl lg:text-5xl font-bold mb-6 cursor-default">
+              <ShinyText 
+                text="Get In Touch" 
+                disabled={false} 
+                speed={5} 
+                className=""
+              />
+            </h2>
           </div>
-          <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-            Contact Us
-          </h2>
-          <p className="text-base md:text-lg text-blue-200/80 max-w-2xl mx-auto">
-            Let's build something amazing together
-          </p>
-        </div>
+        </ScrollReveal>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Contact Form */}
-          <form
-            onSubmit={handleSubmit}
-            className="space-y-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 md:p-8 shadow-lg hover:shadow-[0_0_24px_rgba(34,211,238,0.2)] focus-within:shadow-[0_0_24px_rgba(34,211,238,0.2)] transition-all duration-300"
-          >
+          <ScrollReveal direction="left" delay={0.2}>
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 md:p-8 shadow-lg hover:shadow-[0_0_24px_rgba(34,211,238,0.2)] focus-within:shadow-[0_0_24px_rgba(34,211,238,0.2)] transition-all duration-300"
+            >
             {/* Success/Error Message */}
             {status === 'success' && (
               <div className="flex items-center gap-3 p-4 bg-green-500/10 border border-green-400/30 rounded-2xl text-green-400 animate-fadeIn">
@@ -171,9 +174,11 @@ export default function Contact() {
             {/* Honeypot field to prevent spam */}
             <input type="text" name="_gotcha" style={{ display: 'none' }} tabIndex="-1" autoComplete="off" />
           </form>
+          </ScrollReveal>
 
           {/* Contact Info */}
-          <div className="space-y-6">
+          <ScrollReveal direction="right" delay={0.3}>
+            <div className="space-y-6">
             <div className="flex items-start gap-4 group bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 hover:bg-white/10 hover:shadow-[0_0_24px_rgba(34,211,238,0.2)] transition-all duration-300 cursor-pointer">
               <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-cyan-300 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
                 <Mail className="w-6 h-6 text-brandBlue-darkest" />
@@ -216,6 +221,7 @@ export default function Contact() {
               </div>
             </div>
           </div>
+          </ScrollReveal>
         </div>
       </div>
 
