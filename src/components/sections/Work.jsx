@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiPython, SiDjango, SiPostgresql, SiFirebase, SiUnity, SiNodedotjs } from 'react-icons/si';
 import { FiExternalLink } from 'react-icons/fi';
 import satoruLogo from '../../assets/images/satorulogo.webp';
@@ -96,6 +97,12 @@ const projects = [
 ];
 
 export default function Work() {
+  const [activeCard, setActiveCard] = useState(null);
+
+  const handleCardClick = (index) => {
+    setActiveCard(activeCard === index ? null : index);
+  };
+
   return (
     <section id="work" className="min-h-screen py-20 px-6 relative overflow-hidden">
       <div className="max-w-7xl mx-auto w-full">
@@ -122,72 +129,84 @@ export default function Work() {
               delay={0.1 + (index * 0.08)}
               duration={0.5}
             >
-              <div className="group relative bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 transition-all duration-300 cursor-pointer h-full">
-              {/* Project Card Background with Logo */}
-              <div className="w-full h-full relative overflow-hidden flex items-center justify-center">
-                {/* Gradient Background */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient}`}></div>
-                
-                {/* Dark overlay */}
-                <div className="absolute inset-0 bg-black/50"></div>
-                
-                {/* Logo */}
-                <img
-                  src={project.logo}
-                  alt={`${project.title} logo`}
-                  className="relative z-10 w-32 h-32 object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-300"
-                />
-              </div>
-
-              {/* Project Info - Hidden by default, shown on hover */}
-              <div className="absolute inset-0 p-6 flex flex-col justify-end bg-gradient-to-t from-black/95 via-black to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                {/* Title */}
-                <h3 className="font-heading text-xl md:text-2xl font-bold text-white mb-2 text-cyan-300 drop-shadow-lg">
-                  {project.title}
-                </h3>
-                
-                {/* Description */}
-                <p className="text-sm text-blue-100/90 mb-4 leading-relaxed line-clamp-2 drop-shadow-md">
-                  {project.description}
-                </p>
-                
-                {/* Tech Stack Icons */}
-                <div className="flex gap-2 mb-4">
-                  {project.techStack.map((tech, i) => {
-                    const Icon = tech.icon;
-                    return (
-                      <div key={i} className="bg-black/60 backdrop-blur-md p-2 rounded-lg border border-white/10">
-                        <Icon className={`text-lg ${tech.color}`} />
-                      </div>
-                    );
-                  })}
-                </div>
-                
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.slice(0, 3).map((tag, i) => (
-                    <span
-                      key={i}
-                      className="text-xs font-semibold bg-cyan-500/20 backdrop-blur-sm text-cyan-200 px-3 py-1.5 rounded-full border border-cyan-400/30 drop-shadow-lg"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+              <div 
+                className="group relative bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 transition-all duration-300 cursor-pointer h-full"
+                onClick={() => handleCardClick(index)}
+              >
+                {/* Project Card Background with Logo */}
+                <div className="w-full h-full relative overflow-hidden flex items-center justify-center">
+                  {/* Gradient Background */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient}`}></div>
+                  
+                  {/* Dark overlay */}
+                  <div className="absolute inset-0 bg-black/50"></div>
+                  
+                  {/* Logo */}
+                  <img
+                    src={project.logo}
+                    alt={`${project.title} logo`}
+                    className="relative z-10 w-32 h-32 object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                  />
                 </div>
 
-                {/* Visit Website Button */}
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2.5 text-white hover:text-cyan-300 font-semibold rounded-lg transition-all duration-300 backdrop-blur-sm group/btn w-fit"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <span>Visit Website</span>
-                  <FiExternalLink className="text-base group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform duration-300" />
-                </a>
+                {/* Project Info - Hidden by default, shown on hover (desktop) or tap (mobile) */}
+                <div className={`absolute inset-0 p-6 flex flex-col justify-end bg-gradient-to-t from-black/95 via-black to-transparent transition-opacity duration-300 z-10 ${
+                  activeCard === index ? 'opacity-100' : 'opacity-0 md:group-hover:opacity-100'
+                }`}>
+                  {/* Title */}
+                  <h3 className="font-heading text-xl md:text-2xl font-bold text-white mb-2 text-cyan-300 drop-shadow-lg">
+                    {project.title}
+                  </h3>
+                  
+                  {/* Description */}
+                  <p className="text-sm text-blue-100/90 mb-4 leading-relaxed line-clamp-2 drop-shadow-md">
+                    {project.description}
+                  </p>
+                  
+                  {/* Tech Stack Icons */}
+                  <div className="flex gap-2 mb-4">
+                    {project.techStack.map((tech, i) => {
+                      const Icon = tech.icon;
+                      return (
+                        <div key={i} className="bg-black/60 backdrop-blur-md p-2 rounded-lg border border-white/10">
+                          <Icon className={`text-lg ${tech.color}`} />
+                        </div>
+                      );
+                    })}
+                  </div>
+                  
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.tags.slice(0, 3).map((tag, i) => (
+                      <span
+                        key={i}
+                        className="text-xs font-semibold bg-cyan-500/20 backdrop-blur-sm text-cyan-200 px-3 py-1.5 rounded-full border border-cyan-400/30 drop-shadow-lg"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Visit Website Button */}
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2.5 text-white hover:text-cyan-300 font-semibold rounded-lg transition-all duration-300 backdrop-blur-sm group/btn w-fit"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <span>Visit Website</span>
+                    <FiExternalLink className="text-base group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform duration-300" />
+                  </a>
+                </div>
+
+                {/* Mobile Tap Indicator */}
+                <div className={`md:hidden absolute top-4 right-4 text-xs text-cyan-400 bg-black/60 backdrop-blur-sm px-3 py-1.5 rounded-full border border-cyan-400/30 transition-opacity duration-300 z-20 ${
+                  activeCard === index ? 'opacity-0' : 'opacity-100'
+                }`}>
+                  Tap to view
+                </div>
               </div>
-            </div>
             </ScrollReveal>
           ))}
         </div>
