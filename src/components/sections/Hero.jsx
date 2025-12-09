@@ -71,7 +71,7 @@ export default function Hero() {
               delay={50}
               animateBy="words"
               direction="top"
-              className="bg-linear-to-r from-blue-400 via-cyan-300 to-blue-400 bg-clip-text text-transparent animate-gradient-text block"
+              className="gradient-text block"
             />
           </h1>
 
@@ -97,7 +97,7 @@ export default function Hero() {
                 <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-4 border border-white/10 hover:bg-white/10 hover:shadow-[0_0_16px_rgba(34,211,238,0.3)] transition-all duration-300 cursor-pointer">
                   <div
                     ref={statRefs[index]}
-                    className="font-heading text-2xl md:text-3xl font-medium bg-linear-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent mb-2"
+                    className="font-heading text-2xl md:text-3xl font-medium gradient-text-stats mb-2"
                   >
                     {stat.number + stat.suffix}
                   </div>
@@ -111,31 +111,49 @@ export default function Hero() {
 
       {/* Custom Animations */}
       <style>{`
-        .animate-gradient-text {
+        .gradient-text {
+          background: linear-gradient(90deg, #60a5fa 0%, #22d3ee 50%, #60a5fa 100%);
           background-size: 200% 200%;
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
           animation: gradientMove 3s ease-in-out infinite;
         }
+        
+        .gradient-text-stats {
+          background: linear-gradient(90deg, #60a5fa 0%, #22d3ee 100%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+        
         @keyframes gradientMove {
           0%, 100% { background-position: 0% 50%; }
           50% { background-position: 100% 50%; }
         }
+        
         .animate-blob {
           animation: blobMove 8s ease-in-out infinite;
         }
+        
         .animate-blob2 {
           animation: blobMove2 10s ease-in-out infinite;
         }
+        
         @keyframes blobMove {
           0%, 100% { transform: scale(1) translateY(0); }
           50% { transform: scale(1.1) translateY(20px); }
         }
+        
         @keyframes blobMove2 {
           0%, 100% { transform: scale(1) translateY(0); }
           50% { transform: scale(1.15) translateY(-20px); }
         }
+        
         .animate-spin-slow {
           animation: spin 3s linear infinite;
         }
+        
         @keyframes spin {
           100% { transform: rotate(360deg); }
         }
