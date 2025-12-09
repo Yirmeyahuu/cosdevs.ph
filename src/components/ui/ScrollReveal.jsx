@@ -1,5 +1,4 @@
-// eslint-disable-next-line no-unused-vars
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView } from 'framer-motion'; // eslint-disable-line no-unused-vars
 import { useRef } from 'react';
 
 const ScrollReveal = ({ 
