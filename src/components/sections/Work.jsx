@@ -109,7 +109,7 @@ export default function Work() {
         {/* Section Header */}
         <ScrollReveal direction="up" delay={0.1}>
           <div className="text-center mb-16">
-            <h2 className="font-heading text-4xl md:text-5xl lg:text-5xl font-bold mb-6 cursor-default">
+            <h2 className="font-heading text-4xl md:text-5xl lg:text-5xl font-bold mb-6 cursor-default leading-tight">
               <ShinyText 
                 text="Featured Projects" 
                 disabled={false} 

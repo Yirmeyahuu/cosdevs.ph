@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { ArrowRight, Sparkles } from 'lucide-react'
+import { Sparkles } from 'lucide-react'
 import { motion as Motion } from 'motion/react'
 import BlurText from '../ui/BlurText'
 import ShinyText from '../ui/ShinyText'
@@ -7,7 +7,7 @@ import ShinyText from '../ui/ShinyText'
 export default function Hero() {
   const stats = [
     { number: 150, label: 'Projects Completed', suffix: '+' },
-    { number: 20, label: 'Happy Clients', suffix: '+' },
+    { number: 50, label: 'Satisfied Clients', suffix: '+' },
     { number: 5, label: 'Years Experience', suffix: '+' }
   ]
   const statRefs = [useRef(), useRef(), useRef()]
@@ -28,7 +28,6 @@ export default function Hero() {
             requestAnimationFrame(animate)
           }
         }
-        // Delay the stats animation to start after text animations
         setTimeout(animate, 1200)
       }
     })
@@ -42,11 +41,8 @@ export default function Hero() {
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-tr from-cyan-500/30 via-blue-400/20 to-cyan-400/10 rounded-full blur-3xl animate-blob2" />
       </div>
 
-      {/* Main Container */}
       <div className="relative z-10 max-w-7xl mx-auto w-full">
-        {/* Single Column - Left Aligned Content */}
         <div className="max-w-4xl space-y-8">
-          {/* Badge */}
           <Motion.div 
             initial={{ opacity: 0, scale: 1 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -62,8 +58,7 @@ export default function Hero() {
             />
           </Motion.div>
 
-          {/* Main Heading */}
-          <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold cursor-default leading-tight">
+          <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-medium cursor-default leading-tight">
             <BlurText
               text="Your Vision, Built into"
               delay={50}
@@ -102,7 +97,7 @@ export default function Hero() {
                 <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-4 border border-white/10 hover:bg-white/10 hover:shadow-[0_0_16px_rgba(34,211,238,0.3)] transition-all duration-300 cursor-pointer">
                   <div
                     ref={statRefs[index]}
-                    className="font-heading text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent mb-2"
+                    className="font-heading text-2xl md:text-3xl font-medium bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent mb-2"
                   >
                     {stat.number + stat.suffix}
                   </div>
@@ -143,14 +138,6 @@ export default function Hero() {
         }
         @keyframes spin {
           100% { transform: rotate(360deg); }
-        }
-        @keyframes shine {
-          0% {
-            background-position: 200% center;
-          }
-          100% {
-            background-position: -200% center;
-          }
         }
       `}</style>
     </section>
