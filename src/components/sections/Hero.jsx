@@ -71,7 +71,7 @@ export default function Hero() {
               delay={50}
               animateBy="words"
               direction="top"
-              className="bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-400 bg-clip-text text-transparent animate-gradient-text block"
+              className="bg-linear-to-r from-blue-400 via-cyan-300 to-blue-400 bg-clip-text text-transparent animate-gradient-text block"
             />
           </h1>
 
