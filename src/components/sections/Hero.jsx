@@ -97,7 +97,7 @@ export default function Hero() {
                 <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-4 border border-white/10 hover:bg-white/10 hover:shadow-[0_0_16px_rgba(34,211,238,0.3)] transition-all duration-300 cursor-pointer">
                   <div
                     ref={statRefs[index]}
-                    className="font-heading text-2xl md:text-3xl font-medium bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent mb-2"
+                    className="font-heading text-2xl md:text-3xl font-medium bg-linear-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent mb-2"
                   >
                     {stat.number + stat.suffix}
                   </div>
