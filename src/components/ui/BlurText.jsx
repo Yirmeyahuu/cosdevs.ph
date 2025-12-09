@@ -34,7 +34,6 @@ const BlurText = ({
     if (!ref.current) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // Update inView state whenever intersection changes
         setInView(entry.isIntersecting);
       },
       { threshold, rootMargin }
@@ -88,6 +87,10 @@ const BlurText = ({
             animate={inView ? animateKeyframes : fromSnapshot}
             transition={spanTransition}
             onAnimationComplete={index === elements.length - 1 ? onAnimationComplete : undefined}
+            style={{
+              // Ensure gradient text is visible even at low opacity
+              WebkitTextFillColor: className.includes('gradient-text') ? 'transparent' : undefined
+            }}
           >
             {segment === ' ' ? '\u00A0' : segment}
             {animateBy === 'words' && index < elements.length - 1 && '\u00A0'}
