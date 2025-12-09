@@ -66,13 +66,15 @@ export default function Hero() {
               direction="top"
               className="text-white block mb-2"
             />
-            <BlurText
-              text="Digital Reality."
-              delay={50}
-              animateBy="words"
-              direction="top"
-              className="gradient-text block"
-            />
+            <div className="gradient-text-wrapper">
+              <BlurText
+                text="Digital Reality."
+                delay={50}
+                animateBy="words"
+                direction="top"
+                className="gradient-text block"
+              />
+            </div>
           </h1>
 
           {/* Subtitle */}
@@ -111,7 +113,21 @@ export default function Hero() {
 
       {/* Custom Animations */}
       <style>{`
+        .gradient-text-wrapper {
+          position: relative;
+        }
+        
         .gradient-text {
+          background: linear-gradient(90deg, #60a5fa 0%, #22d3ee 50%, #60a5fa 100%) !important;
+          background-size: 200% 200% !important;
+          -webkit-background-clip: text !important;
+          background-clip: text !important;
+          -webkit-text-fill-color: transparent !important;
+          animation: gradientMove 3s ease-in-out infinite !important;
+          color: #60a5fa; /* Fallback color */
+        }
+        
+        .gradient-text span {
           background: linear-gradient(90deg, #60a5fa 0%, #22d3ee 50%, #60a5fa 100%);
           background-size: 200% 200%;
           -webkit-background-clip: text;
