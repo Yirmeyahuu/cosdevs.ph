@@ -21,7 +21,7 @@ const teamMembers = [
     gradient: 'from-purple-500 via-pink-400 to-yellow-300',
     image: poypoyImg,
     handle: '@jeremiahpantaras',
-    portfolio: { url: 'https://jeremiahpantaras.vercel.app/' }
+    portfolio: { url: 'https://jeremiah.cosedevs.com/' }
   },
   {
     id: 2,
@@ -51,7 +51,7 @@ const teamMembers = [
     gradient: 'from-blue-600 via-cyan-400 to-green-300',
     image: roqueImg,
     handle: '@Roque2025',
-    portfolio: { url: 'https://caelum-psi.vercel.app/' }
+    portfolio: { url: 'https://caelum.cosedevs.com/' }
   },
   {
     id: 5,
@@ -61,7 +61,7 @@ const teamMembers = [
     gradient: 'from-red-600 via-rose-400 to-red-300',
     image: mahinayImg,
     handle: '@Kinkin2025',
-    portfolio: { url: 'https://kenken.vercel.app/' }
+    portfolio: { url: 'https://kerokenn.vercel.app/' }
   },
   {
     id: 6,
@@ -71,7 +71,7 @@ const teamMembers = [
     gradient: 'from-indigo-500 via-blue-400 to-cyan-300',
     image: bayerImg,
     handle: '@Bonbon2025',
-    portfolio: { url: 'https://johnbayer.dev' }
+    portfolio: { url: 'https://gengarit.cosedevs.com/' }
   },
   {
     id: 7,
@@ -81,7 +81,7 @@ const teamMembers = [
     gradient: 'from-pink-500 via-red-400 to-yellow-300',
     image: wenardImg,
     handle: '@Royroy2025',
-    portfolio: { url: '#' }
+    portfolio: { url: 'https://kr1stik.cosedevs.com/' }
   }
 ];
 
