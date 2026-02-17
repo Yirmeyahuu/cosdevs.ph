@@ -61,7 +61,7 @@ const teamMembers = [
     gradient: 'from-red-600 via-rose-400 to-red-300',
     image: mahinayImg,
     handle: '@Kinkin2025',
-    portfolio: { url: 'https://kerokenn.vercel.app/' }
+    portfolio: { url: 'https://kerokenn.cosedevs.com/' }
   },
   {
     id: 6,
