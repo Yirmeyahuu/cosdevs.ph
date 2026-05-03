@@ -11,13 +11,16 @@ import wenardImg from '../assets/images/teamProfile/wenard.webp';
 import jhinwooImg from '../assets/images/teamProfile/jhinwoo.webp';
 import johnImg from '../assets/images/teamProfile/john.webp';
 import mahinayImg from '../assets/images/teamProfile/kenken.webp';
+import kurtImg from '../assets/images/teamProfile/kurtskie.webp';
+import clarkImg from '../assets/images/teamProfile/clark.webp';
+import kyrellImg from '../assets/images/teamProfile/kyrell.webp';
 
 const teamMembers = [
   {
     id: 1,
     name: 'Jeremiah',
     nickname: 'Pantaras',
-    position: 'Founder · Software Engineer · Full Stack Developer',
+    position: 'Founder · Lead Project Manager ·  AI Engineer · Senior Software Engineer',
     gradient: 'from-purple-500 via-pink-400 to-yellow-300',
     image: poypoyImg,
     handle: '@jeremiahpantaras',
@@ -82,6 +85,36 @@ const teamMembers = [
     image: wenardImg,
     handle: '@Royroy2025',
     portfolio: { url: 'https://kr1stik.cosedevs.com/' }
+  },
+  {
+    id: 8,
+    name: 'Kurt Zhynkent',
+    nickname: 'Canja',
+    position: 'Full Stack Developer · Data Analyst',
+    gradient: 'from-pink-500 via-red-400 to-yellow-300',
+    image: kurtImg,
+    handle: '@kcanja2026',
+    portfolio: { url: 'https://kcanja.cosedevs.com/' }
+  },
+  {
+    id: 9,
+    name: 'Clark Jim',
+    nickname: 'Gabiota',
+    position: 'Full Stack Developer · Backend Developer',
+    gradient: 'from-pink-500 via-red-400 to-yellow-300',
+    image: clarkImg,
+    handle: '@Mitakashime2026',
+    portfolio: { url: 'https://mitakashime.cosedevs.com/' }
+  },
+  {
+    id: 10,
+    name: 'Kyrell',
+    nickname: 'Santillan',
+    position: 'Full Stack Developer · Graphic Designer · UI/UX Designer',
+    gradient: 'from-pink-500 via-red-400 to-yellow-300',
+    image: kyrellImg,
+    handle: '@Hazy2026',
+    portfolio: { url: 'https://hazy.cosedevs.com/' }
   }
 ];
 
