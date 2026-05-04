@@ -41,7 +41,7 @@ export default function Footer() {
           {/* Column 1 — Brand */}
           <div>
             <img
-              src="/COSDEVSLOGOTEXT.webp"
+              src="/COSDevsLogoText2026.webp"
               alt="COS Devs"
               className="h-24 w-auto"
             />
