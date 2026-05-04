@@ -1,214 +1,136 @@
-import { useState } from 'react';
-import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiPython, SiDjango, SiPostgresql, SiFirebase, SiUnity, SiNodedotjs } from 'react-icons/si';
+import { motion } from 'framer-motion';
 import { FiExternalLink } from 'react-icons/fi';
+import project1 from '../../assets/images/project1.webp';
+import project2 from '../../assets/images/project2.webp';
+import project3 from '../../assets/images/project3.webp';
 import satoruLogo from '../../assets/images/satorulogo.webp';
-import project2Logo from '../../assets/images/avendrologo.webp';
-import project3Logo from '../../assets/images/poslogo.webp';
-import project4Logo from '../../assets/images/sentinelslogo.webp';
-import project5Logo from '../../assets/images/tabanglogo.webp';
-import ShinyText from '../ui/ShinyText';
-import ScrollReveal from '../ui/ScrollReveal';
+import avendroLogo from '../../assets/images/avendrologo.webp';
+import posLogo from '../../assets/images/poslogo.webp';
+import sentinelsLogo from '../../assets/images/sentinelslogo.webp';
+import tabangLogo from '../../assets/images/tabanglogo.webp';
 
 const projects = [
   {
     title: 'Satoru',
-    description: 'A web application designed to intelligently summarize and extract key information from uploaded documents, providing users with quick, distilled insights.',
-    tags: ['React', 'REST Framework', 'GSAP', 'Python', 'Django', 'PostgreSQL', 'Tailwind CSS'],
-    logo: satoruLogo,
+    image: project1,
     link: 'https://satoru-chi.vercel.app/',
-    gradient: 'from-indigo-900/40 via-purple-900/40 to-pink-900/40',
-    techStack: [
-      { icon: SiReact, color: "text-cyan-400" },
-      { icon: SiPython, color: "text-yellow-300" },
-      { icon: SiPostgresql, color: "text-blue-400" },
-      { icon: SiTailwindcss, color: "text-cyan-300" },
-    ],
   },
   {
     title: 'Avendro',
-    description: 'A comprehensive lending management system built with Django, designed to streamline loan operations and financial management for lending institutions. ',
-    tags: ['Next.js', 'TypeScript', 'Firebase', 'Tailwind CSS'],
-    logo: project2Logo,
+    image: project2,
     link: 'https://avendrobcd.onrender.com/',
-    gradient: 'from-blue-900/40 via-cyan-900/40 to-teal-900/40',
-    techStack: [
-      { icon: SiNextdotjs, color: "text-white" },
-      { icon: SiTypescript, color: "text-blue-500" },
-      { icon: SiFirebase, color: "text-yellow-400" },
-      { icon: SiTailwindcss, color: "text-cyan-300" },
-    ],
   },
   {
     title: 'Point of Sale System',
-    description: 'A point of sale (POS) system for retail businesses, featuring inventory management, sales tracking, and customer management functionalities.',
-    tags: ['Python', 'Django', 'React', 'PostgreSQL'],
-    logo: project3Logo,
+    image: project3,
     link: 'https://example.com/lms',
-    gradient: 'from-emerald-900/40 via-green-900/40 to-lime-900/40',
-    techStack: [
-      { icon: SiPython, color: "text-yellow-300" },
-      { icon: SiDjango, color: "text-green-600" },
-      { icon: SiReact, color: "text-cyan-400" },
-      { icon: SiPostgresql, color: "text-blue-400" },
-    ],
   },
   {
-    title: 'Mobile Game Application',
-    description: 'An engaging mobile game with multiplayer functionality, leaderboards, and in-app purchases.',
-    tags: ['Unity', 'C#', 'Firebase', 'PostgreSQL'],
-    logo: project4Logo,
-    link: 'https://drive.google.com/file/d/1dB0u3wjIOWzKIGJtJPzDSgzceLOgFC2-/view',
-    gradient: 'from-orange-900/40 via-red-900/40 to-pink-900/40',
-    techStack: [
-      { icon: SiUnity, color: "text-white" },
-      { icon: SiFirebase, color: "text-yellow-400" },
-      { icon: SiPostgresql, color: "text-blue-400" },
-      { icon: SiTailwindcss, color: "text-cyan-300" },
-    ],
-  },
-  {
-    title: 'Student Management System with Analytics Dashboard',
-    description: 'A comprehensive dashboard for business intelligence with data visualization and reporting tools.',
-    tags: ['Python', 'Django','Firebase', 'PostgreSQL'],
-    logo: project4Logo,
-    link: 'https://sentinelsadmin.onrender.com/',
-    gradient: 'from-violet-900/40 via-purple-900/40 to-fuchsia-900/40',
-    techStack: [
-      { icon: SiReact, color: "text-cyan-400" },
-      { icon: SiTypescript, color: "text-blue-500" },
-      { icon: SiNodedotjs, color: "text-green-500" },
-      { icon: SiPostgresql, color: "text-blue-400" },
-    ],
-  },
-  {
-    title: 'Tabang Nebros',
-    description: 'A modern, real-time emergency help request system designed for Negros Island, Philippines. This full-stack web application allows users to quiclly sen emergency request with their exact location to resonders.',
-    tags: ['React','Leaflet', 'Python', 'Django', 'PostgreSQL', 'Cloudinary'],
-    logo: project5Logo,
+    title: 'Tabang Negros',
+    image: tabangLogo,
     link: 'https://tabangnegros-installation.vercel.app/',
-    gradient: 'from-sky-900/40 via-blue-900/40 to-indigo-900/40',
-    techStack: [
-      { icon: SiReact, color: "text-white" },
-      { icon: SiPython, color: "text-yellow-300" },
-      { icon: SiDjango, color: "text-green-600" },
-      { icon: SiPostgresql, color: "text-blue-400" },
-    ],
+  },
+  {
+    title: 'Mobile Game',
+    image: sentinelsLogo,
+    link: 'https://drive.google.com/file/d/1dB0u3wjIOWzKIGJtJPzDSgzceLOgFC2-/view',
+  },
+  {
+    title: 'Student Management',
+    image: satoruLogo,
+    link: 'https://sentinelsadmin.onrender.com/',
+  },
+  {
+    title: 'Avendro LMS',
+    image: avendroLogo,
+    link: 'https://avendrobcd.onrender.com/',
+  },
+  {
+    title: 'POS System',
+    image: posLogo,
+    link: 'https://example.com/lms',
   },
 ];
 
-export default function Work() {
-  const [activeCard, setActiveCard] = useState(null);
+const row1 = projects.slice(0, 4);
+const row2 = [...projects].reverse().slice(0, 4);
+const loopRow1 = [...row1, ...row1];
+const loopRow2 = [...row2, ...row2];
 
-  const handleCardClick = (index) => {
-    setActiveCard(activeCard === index ? null : index);
-  };
-
+function ProjectCard({ project }) {
   return (
-    <section id="work" className="min-h-screen py-20 px-6 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto w-full">
-        {/* Section Header */}
-        <ScrollReveal direction="up" delay={0.1}>
-          <div className="text-center mb-16">
-            <h2 className="font-heading text-4xl md:text-5xl lg:text-5xl font-bold mb-6 cursor-default leading-tight">
-              <ShinyText 
-                text="Featured Projects" 
-                disabled={false} 
-                speed={5} 
-                className=""
-              />
-            </h2>
-          </div>
-        </ScrollReveal>
+    <a
+      href={project.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group relative shrink-0 w-[280px] h-[168px] md:w-[400px] md:h-60 rounded-2xl overflow-hidden border border-white/5 block opacity-50 hover:opacity-90 transition-opacity duration-500"
+    >
+      <img
+        src={project.image}
+        alt={project.title}
+        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+      />
+      {/* Subtle dark overlay */}
+      <div className="absolute inset-0 bg-black/20" />
+      {/* Hover title overlay */}
+      <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-end p-4 md:p-5">
+        <div className="flex items-center justify-between w-full">
+          <span className="text-white text-sm md:text-base font-medium tracking-tight">
+            {project.title}
+          </span>
+          <FiExternalLink className="text-zinc-400 text-sm shrink-0 ml-2" />
+        </div>
+      </div>
+    </a>
+  );
+}
 
-        {/* Bento Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[320px]">
-          {projects.map((project, index) => (
-            <ScrollReveal 
-              key={index} 
-              direction="up" 
-              delay={0.1 + (index * 0.08)}
-              duration={0.5}
-            >
-              <div 
-                className="group relative bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 transition-all duration-300 cursor-pointer h-full"
-                onClick={() => handleCardClick(index)}
-              >
-                {/* Project Card Background with Logo */}
-                <div className="w-full h-full relative overflow-hidden flex items-center justify-center">
-                  {/* Gradient Background */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient}`}></div>
-                  
-                  {/* Dark overlay */}
-                  <div className="absolute inset-0 bg-black/50"></div>
-                  
-                  {/* Logo */}
-                  <img
-                    src={project.logo}
-                    alt={`${project.title} logo`}
-                    className="relative z-10 w-32 h-32 object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-300"
-                  />
-                </div>
+export default function Work() {
+  return (
+    <section id="work" className="bg-black relative overflow-hidden py-24">
+      {/* Vignette */}
+      <div className="pointer-events-none absolute inset-0 z-10">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,black_0%,transparent_20%,transparent_80%,black_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,black_80%)]" />
+      </div>
 
-                {/* Project Info - Hidden by default, shown on hover (desktop) or tap (mobile) */}
-                <div className={`absolute inset-0 p-6 flex flex-col justify-end bg-gradient-to-t from-black/95 via-black to-transparent transition-opacity duration-300 z-10 ${
-                  activeCard === index ? 'opacity-100' : 'opacity-0 md:group-hover:opacity-100'
-                }`}>
-                  {/* Title */}
-                  <h3 className="font-heading text-xl md:text-2xl font-bold text-white mb-2 text-cyan-300 drop-shadow-lg">
-                    {project.title}
-                  </h3>
-                  
-                  {/* Description */}
-                  <p className="text-sm text-blue-100/90 mb-4 leading-relaxed line-clamp-2 drop-shadow-md">
-                    {project.description}
-                  </p>
-                  
-                  {/* Tech Stack Icons */}
-                  <div className="flex gap-2 mb-4">
-                    {project.techStack.map((tech, i) => {
-                      const Icon = tech.icon;
-                      return (
-                        <div key={i} className="bg-black/60 backdrop-blur-md p-2 rounded-lg border border-white/10">
-                          <Icon className={`text-lg ${tech.color}`} />
-                        </div>
-                      );
-                    })}
-                  </div>
-                  
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tags.slice(0, 3).map((tag, i) => (
-                      <span
-                        key={i}
-                        className="text-xs font-semibold bg-cyan-500/20 backdrop-blur-sm text-cyan-200 px-3 py-1.5 rounded-full border border-cyan-400/30 drop-shadow-lg"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+      {/* Header */}
+      <div className="text-center max-w-4xl mx-auto mb-16 px-6 relative z-20">
+        <p className="text-zinc-500 uppercase text-sm tracking-widest">Our Work</p>
+        <h2 className="text-white/80 text-5xl md:text-7xl font-bold tracking-tight mt-4">
+          Architecting the Future, One Line at a Time.
+        </h2>
+        <p className="text-zinc-400 mt-5 text-base md:text-lg leading-relaxed">
+          A selection of products we've designed, built, and shipped.
+        </p>
+      </div>
 
-                  {/* Visit Website Button */}
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2.5 text-white hover:text-cyan-300 font-semibold rounded-lg transition-all duration-300 backdrop-blur-sm group/btn w-fit"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <span>Visit Website</span>
-                    <FiExternalLink className="text-base group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform duration-300" />
-                  </a>
-                </div>
+      {/* Scroll Rows */}
+      <div className="space-y-6">
+        {/* Row 1 — left to right */}
+        <div className="overflow-hidden">
+          <motion.div
+            className="flex gap-4 md:gap-6 w-max"
+            animate={{ x: ['0%', '-50%'] }}
+            transition={{ repeat: Infinity, duration: 28, ease: 'linear' }}
+          >
+            {loopRow1.map((project, i) => (
+              <ProjectCard key={i} project={project} />
+            ))}
+          </motion.div>
+        </div>
 
-                {/* Mobile Tap Indicator */}
-                <div className={`md:hidden absolute top-4 right-4 text-xs text-cyan-400 bg-black/60 backdrop-blur-sm px-3 py-1.5 rounded-full border border-cyan-400/30 transition-opacity duration-300 z-20 ${
-                  activeCard === index ? 'opacity-0' : 'opacity-100'
-                }`}>
-                  Tap to view
-                </div>
-              </div>
-            </ScrollReveal>
-          ))}
+        {/* Row 2 — right to left */}
+        <div className="overflow-hidden">
+          <motion.div
+            className="flex gap-4 md:gap-6 w-max"
+            animate={{ x: ['-50%', '0%'] }}
+            transition={{ repeat: Infinity, duration: 28, ease: 'linear' }}
+          >
+            {loopRow2.map((project, i) => (
+              <ProjectCard key={i} project={project} />
+            ))}
+          </motion.div>
         </div>
       </div>
     </section>

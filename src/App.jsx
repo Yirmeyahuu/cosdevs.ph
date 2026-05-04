@@ -10,7 +10,7 @@ import { Analytics } from "@vercel/analytics/react";
 function App() {
   return (
     <BrowserRouter>
-      <div className="bg-brandBlue-darkest min-h-screen">
+      <div className="bg-black min-h-screen">
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />

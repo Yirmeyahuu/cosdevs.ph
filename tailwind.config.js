@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Geist', 'ui-sans-serif', 'system-ui'],
+      },
       keyframes: {
         shine: {
           '0%': { 'background-position': '100%' },

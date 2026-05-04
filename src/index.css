@@ -4,23 +4,18 @@
   --color-brandBlue-darkest: #070F2B;
   --color-brandBlue-dark: #001f40;
   --color-brandBlue-medium: #002853;
-  
-  --font-family-sans: "Fustat", system-ui, sans-serif;
-  --font-family-heading: "Lexend", system-ui, sans-serif;
+
+  --font-family-sans: "Geist", ui-sans-serif, system-ui;
 }
 
 body {
-  @apply bg-brandBlue-darkest;
-  font-family: "Fustat", system-ui, sans-serif;
+  @apply bg-black text-white;
+  font-family: "Geist", ui-sans-serif, system-ui;
   overflow-x: hidden;
 }
 
 #root {
   overflow-x: hidden;
-}
-
-.font-heading {
-  font-family: "Lexend", system-ui, sans-serif;
 }
 
 .blur-3xl {

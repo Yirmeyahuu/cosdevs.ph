@@ -1,224 +1,309 @@
-import { useState } from 'react';
-import { HiOutlineMail, HiOutlinePhone, HiOutlineLocationMarker } from 'react-icons/hi';
-import { CheckCircle, AlertCircle } from 'lucide-react';
+import { useState } from 'react'
+import { Send, Mail, Phone, MapPin, CheckCircle, AlertCircle } from 'lucide-react'
+import { motion } from 'framer-motion' // eslint-disable-line no-unused-vars
+
+const INPUT_CLASS =
+  'w-full bg-zinc-900/40 border border-white/5 rounded-xl p-3 text-white text-sm placeholder:text-zinc-500 focus:border-white/20 focus:outline-none transition-colors duration-200'
+
+const CONTACT_INFO = [
+  {
+    iconEl: <Mail className="w-4 h-4 text-zinc-300" />,
+    label: 'Email',
+    content: (
+      <a
+        href="mailto:cosdevsph@outlook.ph"
+        className="text-zinc-400 hover:text-white transition-colors duration-200 text-sm"
+      >
+        contact@cosdevs.com
+      </a>
+    ),
+  },
+  {
+    iconEl: <Phone className="w-4 h-4 text-zinc-300" />,
+    label: 'Phone',
+    content: (
+      <a
+        href="tel:+639085608811"
+        className="text-zinc-400 hover:text-white transition-colors duration-200 text-sm"
+      >
+        (+63) 908 560 8811
+      </a>
+    ),
+  },
+  {
+    iconEl: <MapPin className="w-4 h-4 text-zinc-300" />,
+    label: 'Location',
+    content: (
+      <p className="text-zinc-400 text-sm">
+        Bacolod City, Negros Island
+        <br />
+        Philippines, 6100
+      </p>
+    ),
+  },
+]
+
+const STARS = Array.from({ length: 100 }, (_, i) => ({
+  id: i,
+  x: +((i * 22.13 + (i % 7) * 14.7) % 100).toFixed(2),
+  y: +((i * 17.43 + (i % 5) * 19.3) % 100).toFixed(2),
+  size: +(((i * 0.91) % 1.8) + 0.9).toFixed(2),
+  opacity: +(((i * 0.17) % 0.5) + 0.45).toFixed(2),
+  duration: +(((i * 0.83) % 3) + 2.5).toFixed(1),
+  delay: +((i * 0.47) % 5).toFixed(2),
+}))
+
+const SHOOTS = [
+  { id: 0, x: 8,  y: 10, delay: 0,    duration: 1.3, gap: 12 },
+  { id: 1, x: 40, y: 4,  delay: 5.2,  duration: 1.5, gap: 14 },
+  { id: 2, x: 64, y: 18, delay: 10.8, duration: 1.2, gap: 11 },
+  { id: 3, x: 20, y: 28, delay: 17,   duration: 1.4, gap: 16 },
+]
+
+function GalaxyBackground() {
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none bg-black">
+      {/* Galaxy core */}
+      <div
+        className="absolute rounded-full blur-3xl"
+        style={{
+          width: 700,
+          height: 700,
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          background: 'radial-gradient(circle, #4338ca 0%, #312e81 40%, transparent 70%)',
+          opacity: 0.22,
+        }}
+      />
+      {/* Secondary haze — top-right */}
+      <div
+        className="absolute rounded-full blur-3xl"
+        style={{
+          width: 480,
+          height: 220,
+          top: '8%',
+          right: '4%',
+          background: 'radial-gradient(ellipse, #2563eb 0%, transparent 70%)',
+          opacity: 0.14,
+        }}
+      />
+      {/* Stars */}
+      {STARS.map((s) => (
+        <motion.div
+          key={s.id}
+          style={{
+            position: 'absolute',
+            left: `${s.x}%`,
+            top: `${s.y}%`,
+            width: s.size,
+            height: s.size,
+            borderRadius: '50%',
+            background: 'white',
+            filter: `blur(${s.size * 0.6}px)`,
+          }}
+          animate={{ opacity: [s.opacity, s.opacity * 0.2, s.opacity] }}
+          transition={{ duration: s.duration, repeat: Infinity, delay: s.delay, ease: 'easeInOut' }}
+        />
+      ))}
+      {/* Shooting stars */}
+      {SHOOTS.map((s) => (
+        <motion.div
+          key={s.id}
+          style={{
+            position: 'absolute',
+            left: `${s.x}%`,
+            top: `${s.y}%`,
+            width: 90,
+            height: 1,
+            background: 'linear-gradient(to right, transparent 0%, rgba(255,255,255,0.9) 50%, transparent 100%)',
+            rotate: 35,
+            originX: 0,
+            originY: 0.5,
+          }}
+          initial={{ x: 0, y: 0, opacity: 0 }}
+          animate={{ x: [0, 260], y: [0, 140], opacity: [0, 0.9, 0.9, 0] }}
+          transition={{
+            duration: s.duration,
+            repeat: Infinity,
+            repeatDelay: s.gap,
+            delay: s.delay,
+            ease: 'easeIn',
+            times: [0, 0.08, 0.75, 1],
+          }}
+        />
+      ))}
+    </div>
+  )
+}
 
 export default function ContactPage() {
-  const [status, setStatus] = useState('idle'); // idle, submitting, success, error
+  const [status, setStatus] = useState('idle')
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatus('submitting');
+    e.preventDefault()
+    setStatus('submitting')
 
-    const form = e.target;
-    const formData = new FormData(form);
+    const form = e.target
+    const formData = new FormData(form)
 
     try {
       const response = await fetch('https://formspree.io/f/xovpdlzz', {
         method: 'POST',
         body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
+        headers: { Accept: 'application/json' },
+      })
 
       if (response.ok) {
-        setStatus('success');
-        form.reset();
-        setTimeout(() => setStatus('idle'), 5000);
+        setStatus('success')
+        form.reset()
+        setTimeout(() => setStatus('idle'), 5000)
       } else {
-        setStatus('error');
-        setTimeout(() => setStatus('idle'), 5000);
+        setStatus('error')
+        setTimeout(() => setStatus('idle'), 5000)
       }
-    } catch (error) {
-      setStatus('error');
-      setTimeout(() => setStatus('idle'), 5000);
+    } catch {
+      setStatus('error')
+      setTimeout(() => setStatus('idle'), 5000)
     }
-  };
+  }
 
   return (
     <section
       id="contact"
-      className="min-h-screen pt-40 bg-gradient-to-br from-brandBlue-darkest via-brandBlue-dark to-cyan-900 py-12 px-4 sm:px-6 lg:px-8 flex items-center animate-pageFadeIn"
+      className="relative min-h-screen pt-32 pb-24 px-6 lg:px-12 overflow-hidden flex items-center"
     >
-      <div className="max-w-6xl w-full mx-auto">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-heading font-bold text-white">
-            Get In Touch
-          </h1>
-          <p className="mt-4 text-lg text-blue-200/80 max-w-2xl mx-auto">
-            We're here to help and answer any questions you might have. We look forward to hearing from you.
-          </p>
-        </div>
+      <GalaxyBackground />
 
-        {/* Main Content Card */}
-        <div className="bg-slate-900/40 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden">
-          <div className="grid md:grid-cols-2">
-            
-            {/* Left Side: Contact Information */}
-            <div className="p-8 md:p-12 bg-slate-800/30">
-              <h2 className="text-2xl font-bold text-white mb-6">Contact Information</h2>
-              <p className="text-blue-200/90 mb-8">
-                Fill out the form and our team will get back to you within 24 hours. Or, reach out to us directly through one of the channels below.
+      <div className="max-w-5xl mx-auto w-full relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+          className="bg-zinc-950/80 border border-white/10 rounded-2xl overflow-hidden shadow-2xl hover:-translate-y-1 transition-transform duration-300"
+        >
+          {/* Traffic lights */}
+          <div className="flex items-center gap-2 px-4 py-3 bg-zinc-900/60 border-b border-white/10">
+            <div className="w-3 h-3 rounded-full bg-red-500" />
+            <div className="w-3 h-3 rounded-full bg-yellow-500" />
+            <div className="w-3 h-3 rounded-full bg-green-500" />
+          </div>
+
+          {/* Window content */}
+          <div className="p-8 lg:p-10">
+            <div className="mb-8">
+              <h2 className="text-white text-2xl font-medium">Get In Touch</h2>
+              <p className="text-zinc-400 mt-2 text-sm">
+                Have a project in mind? We&apos;d love to hear about it.
               </p>
-              
-              <div className="space-y-6">
-                <div className="flex items-center space-x-4">
-                  <div className="bg-cyan-500/10 p-3 rounded-full">
-                    <HiOutlinePhone className="w-6 h-6 text-cyan-400" />
-                  </div>
-                  <span className="text-lg text-white">(+63) 908 560 8811</span>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <div className="bg-cyan-500/10 p-3 rounded-full">
-                    <HiOutlineMail className="w-6 h-6 text-cyan-400" />
-                  </div>
-                  <span className="text-lg text-white">contact@cosdevs.com</span>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <div className="bg-cyan-500/10 p-3 rounded-full">
-                    <HiOutlineLocationMarker className="w-6 h-6 text-cyan-400" />
-                  </div>
-                  <span className="text-lg text-white">Bacolod City, Negros Island, Philippines, 6100</span>
-                </div>
-              </div>
             </div>
 
-            {/* Right Side: Contact Form */}
-            <div className="p-8 md:p-12">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Success/Error Message */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+              {/* Contact form */}
+              <form onSubmit={handleSubmit} className="space-y-4">
                 {status === 'success' && (
-                  <div className="flex items-center gap-3 p-4 bg-green-500/10 border border-green-400/30 rounded-2xl text-green-400 animate-fadeIn">
-                    <CheckCircle size={20} className="flex-shrink-0" />
-                    <span className="text-sm font-medium">Message sent successfully! We'll get back to you soon.</span>
+                  <div className="flex items-center gap-3 p-3 bg-green-500/10 border border-green-400/20 rounded-xl text-green-400 text-sm">
+                    <CheckCircle size={16} className="shrink-0" />
+                    Message sent! We&apos;ll get back to you soon.
                   </div>
                 )}
                 {status === 'error' && (
-                  <div className="flex items-center gap-3 p-4 bg-red-500/10 border border-red-400/30 rounded-2xl text-red-400 animate-fadeIn">
-                    <AlertCircle size={20} className="flex-shrink-0" />
-                    <span className="text-sm font-medium">Oops! Something went wrong. Please try again.</span>
+                  <div className="flex items-center gap-3 p-3 bg-red-500/10 border border-red-400/20 rounded-xl text-red-400 text-sm">
+                    <AlertCircle size={16} className="shrink-0" />
+                    Something went wrong. Please try again.
                   </div>
                 )}
 
-                <div className="relative">
+                {/* Name + Email */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <input
                     type="text"
-                    id="name"
                     name="name"
                     required
-                    className="peer w-full bg-gray-800/50 border border-gray-700 rounded-lg py-3 px-4 text-white placeholder-transparent focus:outline-none focus:ring-2 focus:ring-cyan-500 transition duration-200"
                     placeholder="Your Name"
+                    className={INPUT_CLASS}
                   />
-                  <label
-                    htmlFor="name"
-                    className="absolute left-4 -top-2.5 text-cyan-400 text-sm font-medium bg-brandBlue-darkest px-2 transition-all duration-200 peer-placeholder-shown:text-base peer-placeholder-shown:text-blue-200/50 peer-placeholder-shown:top-3 peer-placeholder-shown:bg-transparent peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-cyan-400 peer-focus:bg-brandBlue-darkest"
-                  >
-                    Your Name
-                  </label>
-                </div>
-                <div className="relative">
                   <input
                     type="email"
-                    id="email"
                     name="email"
                     required
-                    className="peer w-full bg-gray-800/50 border border-gray-700 rounded-lg py-3 px-4 text-white placeholder-transparent focus:outline-none focus:ring-2 focus:ring-cyan-500 transition duration-200"
                     placeholder="Your Email"
+                    className={INPUT_CLASS}
                   />
-                  <label
-                    htmlFor="email"
-                    className="absolute left-4 -top-2.5 text-cyan-400 text-sm font-medium bg-brandBlue-darkest px-2 transition-all duration-200 peer-placeholder-shown:text-base peer-placeholder-shown:text-blue-200/50 peer-placeholder-shown:top-3 peer-placeholder-shown:bg-transparent peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-cyan-400 peer-focus:bg-brandBlue-darkest"
-                  >
-                    Your Email
-                  </label>
                 </div>
-                <div className="relative">
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    required
-                    className="peer w-full bg-gray-800/50 border border-gray-700 rounded-lg py-3 px-4 text-white placeholder-transparent focus:outline-none focus:ring-2 focus:ring-cyan-500 transition duration-200"
-                    placeholder="Subject"
-                  />
-                  <label
-                    htmlFor="subject"
-                    className="absolute left-4 -top-2.5 text-cyan-400 text-sm font-medium bg-brandBlue-darkest px-2 transition-all duration-200 peer-placeholder-shown:text-base peer-placeholder-shown:text-blue-200/50 peer-placeholder-shown:top-3 peer-placeholder-shown:bg-transparent peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-cyan-400 peer-focus:bg-brandBlue-darkest"
-                  >
-                    Subject
-                  </label>
-                </div>
-                <div className="relative">
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows="5"
-                    required
-                    className="peer w-full bg-gray-800/50 border border-gray-700 rounded-lg py-3 px-4 text-white placeholder-transparent focus:outline-none focus:ring-2 focus:ring-cyan-500 transition duration-200 resize-none"
-                    placeholder="Your Message"
-                  />
-                  <label
-                    htmlFor="message"
-                    className="absolute left-4 -top-2.5 text-cyan-400 text-sm font-medium bg-brandBlue-darkest px-2 transition-all duration-200 peer-placeholder-shown:text-base peer-placeholder-shown:text-blue-200/50 peer-placeholder-shown:top-3 peer-placeholder-shown:bg-transparent peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-cyan-400 peer-focus:bg-brandBlue-darkest"
-                  >
-                    Your Message
-                  </label>
-                </div>
+
+                {/* Subject */}
+                <input
+                  type="text"
+                  name="subject"
+                  required
+                  placeholder="Subject"
+                  className={INPUT_CLASS}
+                />
+
+                {/* Message */}
+                <textarea
+                  name="message"
+                  rows={5}
+                  required
+                  placeholder="Your Message"
+                  className={`${INPUT_CLASS} resize-none`}
+                />
+
+                {/* Submit */}
                 <button
                   type="submit"
                   disabled={status === 'submitting'}
-                  className="w-full justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-lg text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-cyan-500 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex items-center justify-center gap-2 bg-white text-black hover:bg-zinc-200 transition-all duration-300 rounded-xl px-6 py-3 text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed w-full sm:w-auto cursor-pointer"
                 >
                   {status === 'submitting' ? (
                     <>
-                      <svg className="animate-spin h-5 w-5 inline-block mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      <svg
+                        className="animate-spin h-4 w-4"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                       </svg>
                       Sending...
                     </>
                   ) : (
-                    <>Send Message</>
+                    <>
+                      Send Message
+                      <Send size={15} />
+                    </>
                   )}
                 </button>
-                {/* Honeypot field to prevent spam */}
+
+                {/* Honeypot */}
                 <input type="text" name="_gotcha" style={{ display: 'none' }} tabIndex="-1" autoComplete="off" />
               </form>
+
+              {/* Contact info */}
+              <div className="space-y-4">
+                {CONTACT_INFO.map(({ iconEl, label, content }) => (
+                  <div
+                    key={label}
+                    className="flex items-start gap-4 p-4 bg-white/3 border border-white/[0.07] rounded-xl hover:bg-white/6 transition-colors duration-200"
+                  >
+                    <div className="w-9 h-9 bg-white/6 border border-white/10 rounded-lg flex items-center justify-center shrink-0">
+                      {iconEl}
+                    </div>
+                    <div>
+                      <p className="text-zinc-300 text-xs font-medium mb-1 uppercase tracking-wider">
+                        {label}
+                      </p>
+                      {content}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
-
-      {/* Custom Animation */}
-      <style>{`
-        @keyframes pageFadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-pageFadeIn {
-          animation: pageFadeIn 0.5s cubic-bezier(.4,0,.2,1);
-        }
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(-10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fadeIn {
-          animation: fadeIn 0.3s ease-out;
-        }
-      `}</style>
     </section>
-  );
+  )
 }
