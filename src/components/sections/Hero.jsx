@@ -84,7 +84,7 @@ export default function Hero() {
       />
 
       {/* Content */}
-      <div className="relative z-30 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:pl-12 lg:pr-16 py-24 sm:py-28 lg:py-32">
+      <div className="relative z-30 w-full max-w-7xl mx-auto lg:ml-0 px-6 sm:px-8 lg:pl-12 lg:pr-16 py-24 sm:py-28 lg:py-32">
         <div className="max-w-2xl space-y-6 sm:space-y-8">
 
           {/* Badge */}
