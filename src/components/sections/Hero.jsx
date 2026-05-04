@@ -161,8 +161,7 @@ export default function Hero() {
             transition={{ duration: 0.85, delay: 0.3, ease: 'easeOut' }}
             className="text-zinc-400 text-base sm:text-lg md:text-xl leading-relaxed max-w-xl"
           >
-            We build the custom software you need to move beyond manual
-            processes, connect with your customers, and achieve real growth.
+            Be the architect of your most ambitious ideas. Crafting them into a refined digital reality is the new standard.
           </Motion.p>
 
           {/* CTA Buttons */}
