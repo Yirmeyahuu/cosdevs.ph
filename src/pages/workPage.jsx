@@ -1,5 +1,8 @@
 import { motion } from 'framer-motion';
-import { SiReact, SiTailwindcss, SiPython, SiDjango, SiPostgresql, SiFirebase, SiUnity } from 'react-icons/si';
+import { 
+  SiReact, SiTailwindcss, SiPython, SiDjango, SiPostgresql, SiFirebase, SiUnity,
+  SiNextdotjs, SiTypescript, SiSupabase, SiStripe, SiVite, SiNetlify, SiBootstrap, SiNodedotjs, SiFramer
+} from 'react-icons/si';
 import { FiExternalLink } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import project1 from '../assets/images/project1.webp';
@@ -10,6 +13,13 @@ import avendroLogo from '../assets/images/avendrologo.webp';
 import posLogo from '../assets/images/poslogo.webp';
 import sentinelsLogo from '../assets/images/sentinelslogo.webp';
 import tabangLogo from '../assets/images/tabanglogo.webp';
+import aetherLogo from '../assets/images/AetherLogo.webp';
+import aetherWeb from '../assets/images/AetherWeb.webp';
+import luxuriagaLogo from '../assets/images/LuxuriagaLogo.webp';
+import luxuriagaWeb from '../assets/images/LuxuriagaWeb.webp';
+import totalEdgeLogo from '../assets/images/totaledge.webp';
+import totalEdgeWeb from '../assets/images/totalEdgeProject.webp';
+import talaWeb from '../assets/images/TalaWeb.webp';
 
 const projects = [
   {
@@ -96,10 +106,67 @@ const projects = [
       { icon: SiPostgresql, color: 'text-blue-400' },
     ],
   },
+  {
+    title: 'Aether-atelier',
+    description: 'A sophisticated e-commerce platform and atelier management system built with Next.js, featuring seamless Stripe integration and Supabase backend.',
+    tags: ['Next.js', 'TypeScript', 'GSAP', 'Supabase', 'Stripe'],
+    logo: aetherLogo,
+    scrollImage: aetherWeb,
+    needsWhiteBg: true,
+    link: 'https://aether-atelier.vercel.app/',
+    techStack: [
+      { icon: SiNextdotjs, color: 'text-white' },
+      { icon: SiTypescript, color: 'text-blue-500' },
+      { icon: SiSupabase, color: 'text-emerald-500' },
+      { icon: SiStripe, color: 'text-indigo-400' },
+    ],
+  },
+  {
+    title: 'Luxuriaga',
+    description: 'A high-end luxury real estate and lifestyle platform built with React and Vite, utilizing Supabase for a robust backend and dynamic content management.',
+    tags: ['React', 'TypeScript', 'Vite', 'Supabase', 'Netlify'],
+    logo: luxuriagaLogo,
+    scrollImage: luxuriagaWeb,
+    link: 'https://luxuriaga-hotel.netlify.app/',
+    techStack: [
+      { icon: SiReact, color: 'text-cyan-400' },
+      { icon: SiVite, color: 'text-yellow-400' },
+      { icon: SiSupabase, color: 'text-emerald-500' },
+      { icon: SiNetlify, color: 'text-cyan-500' },
+    ],
+  },
+  {
+    title: 'TotalEdge',
+    description: 'A modern enterprise-grade application built with Next.js 14, featuring advanced animations with Framer Motion and GSAP, integrated with Stripe and Google APIs.',
+    tags: ['Next.js', 'Framer Motion', 'GSAP', 'Stripe', 'Supabase'],
+    logo: totalEdgeLogo,
+    scrollImage: totalEdgeWeb,
+    link: 'https://www.totaledge.au/coaching',
+    techStack: [
+      { icon: SiNextdotjs, color: 'text-white' },
+      { icon: SiFramer, color: 'text-pink-500' },
+      { icon: SiSupabase, color: 'text-emerald-500' },
+      { icon: SiStripe, color: 'text-indigo-400' },
+    ],
+  },
+  {
+    title: 'TALA',
+    description: 'A cross-platform application utilizing Bootstrap and Node.js on the frontend, with a powerful Python/Django and Firebase backend for real-time data handling.',
+    tags: ['Bootstrap', 'Node.js', 'Firebase', 'Django'],
+    logo: talaWeb,
+    scrollImage: talaWeb,
+    link: 'https://tala.cosedevs.com/',
+    techStack: [
+      { icon: SiBootstrap, color: 'text-purple-500' },
+      { icon: SiNodedotjs, color: 'text-green-500' },
+      { icon: SiFirebase, color: 'text-yellow-400' },
+      { icon: SiDjango, color: 'text-green-600' },
+    ],
+  },
 ];
 
-const row1 = projects.slice(0, 3);
-const row2 = [...projects].reverse().slice(0, 3);
+const row1 = projects.slice(0, Math.ceil(projects.length / 2));
+const row2 = projects.slice(Math.ceil(projects.length / 2));
 const loopRow1 = [...row1, ...row1];
 const loopRow2 = [...row2, ...row2];
 
@@ -141,7 +208,13 @@ export default function WorkPage() {
         </div>
 
         {/* Header */}
-        <div className="text-center max-w-4xl mx-auto mb-16 px-6 relative z-20">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center max-w-4xl mx-auto mb-16 px-6 relative z-20"
+        >
           <p className="text-zinc-500 uppercase text-sm tracking-widest">Our Work</p>
           <h1 className="text-white/80 text-5xl md:text-7xl font-bold tracking-tight mt-4">
             Architecting the Future,<br />One Line at a Time.
@@ -149,16 +222,22 @@ export default function WorkPage() {
           <p className="text-zinc-400 mt-5 text-base md:text-lg leading-relaxed">
             A selection of products we've designed, built, and shipped.
           </p>
-        </div>
+        </motion.div>
 
         {/* Scroll Rows */}
-        <div className="space-y-6">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0.2 }}
+          className="space-y-6"
+        >
           {/* Row 1 — left to right */}
           <div className="overflow-hidden">
             <motion.div
               className="flex gap-4 md:gap-6 w-max"
               animate={{ x: ['0%', '-50%'] }}
-              transition={{ repeat: Infinity, duration: 28, ease: 'linear' }}
+              transition={{ repeat: Infinity, duration: 40, ease: 'linear' }}
             >
               {loopRow1.map((project, i) => (
                 <ScrollCard key={i} project={project} />
@@ -171,34 +250,53 @@ export default function WorkPage() {
             <motion.div
               className="flex gap-4 md:gap-6 w-max"
               animate={{ x: ['-50%', '0%'] }}
-              transition={{ repeat: Infinity, duration: 28, ease: 'linear' }}
+              transition={{ repeat: Infinity, duration: 40, ease: 'linear' }}
             >
               {loopRow2.map((project, i) => (
                 <ScrollCard key={i} project={project} />
               ))}
             </motion.div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* ── Detailed Project Grid ── */}
       <section className="px-4 md:px-6 pb-24 relative z-20">
         <div className="max-w-7xl mx-auto">
-          <p className="text-zinc-500 uppercase text-xs tracking-widest text-center mb-12">All Projects</p>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-zinc-500 uppercase text-xs tracking-widest text-center mb-12"
+          >
+            All Projects
+          </motion.p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects.map((project, index) => (
-              <div
+              <motion.div
                 key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: (index % 3) * 0.1 }}
                 className="group relative bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 transition-all duration-300"
               >
                 {/* Logo banner */}
                 <div className="w-full h-52 relative overflow-hidden flex items-center justify-center bg-zinc-900">
                   <div className="absolute inset-0 bg-black/40" />
-                  <img
-                    src={project.logo}
-                    alt={`${project.title} logo`}
-                    className="relative z-10 w-28 h-28 object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-300"
-                  />
+                  {project.title === 'TALA' ? (
+                    <div className="relative z-10 flex items-center justify-center w-full h-full bg-zinc-900">
+                      <span className="text-4xl font-bold tracking-tighter text-white">TALA</span>
+                    </div>
+                  ) : (
+                    <div className={`${project.needsWhiteBg ? 'bg-white p-4 rounded-xl' : ''} relative z-10 flex items-center justify-center`}>
+                      <img
+                        src={project.logo}
+                        alt={`${project.title} logo`}
+                        className="w-28 h-28 object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                      />
+                    </div>
+                  )}
                 </div>
 
                 {/* Info */}
@@ -245,12 +343,18 @@ export default function WorkPage() {
                     <FiExternalLink className="text-xs group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform duration-300" />
                   </a>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
           {/* CTA */}
-          <div className="mt-20 text-center">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mt-20 text-center"
+          >
             <h2 className="text-white text-2xl md:text-3xl font-medium tracking-tight mb-3">
               Ready to build something amazing?
             </h2>
@@ -263,7 +367,7 @@ export default function WorkPage() {
             >
               Contact Us
             </Link>
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>

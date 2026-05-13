@@ -8,8 +8,15 @@ import avendroLogo from '../../assets/images/avendrologo.webp';
 import posLogo from '../../assets/images/poslogo.webp';
 import sentinelsLogo from '../../assets/images/sentinelslogo.webp';
 import tabangLogo from '../../assets/images/tabanglogo.webp';
+import aetherWeb from '../../assets/images/AetherWeb.webp';
+import luxuriagaWeb from '../../assets/images/LuxuriagaWeb.webp';
+import totalEdgeWeb from '../../assets/images/totalEdgeProject.webp';
+import talaWeb from '../../assets/images/TalaWeb.webp';
+
+import ScrollReveal from '../ui/ScrollReveal';
 
 const projects = [
+  // ... (projects array content remains the same as in previous step)
   {
     title: 'Satoru',
     image: project1,
@@ -23,7 +30,7 @@ const projects = [
   {
     title: 'Point of Sale System',
     image: project3,
-    link: 'https://example.com/lms',
+    link: 'https://example.com/pos',
   },
   {
     title: 'Tabang Negros',
@@ -48,12 +55,33 @@ const projects = [
   {
     title: 'POS System',
     image: posLogo,
-    link: 'https://example.com/lms',
+    link: 'https://example.com/pos',
+  },
+  {
+    title: 'Aether-atelier',
+    image: aetherWeb,
+    needsWhiteBg: true,
+    link: 'https://aether-atelier.vercel.app/',
+  },
+  {
+    title: 'Luxuriaga',
+    image: luxuriagaWeb,
+    link: 'https://luxuriaga-hotel.netlify.app/',
+  },
+  {
+    title: 'TotalEdge',
+    image: totalEdgeWeb,
+    link: 'https://www.totaledge.au/coaching',
+  },
+  {
+    title: 'TALA',
+    image: talaWeb,
+    link: 'https://tala.cosedevs.com/',
   },
 ];
 
-const row1 = projects.slice(0, 4);
-const row2 = [...projects].reverse().slice(0, 4);
+const row1 = projects.slice(0, Math.ceil(projects.length / 2));
+const row2 = projects.slice(Math.ceil(projects.length / 2));
 const loopRow1 = [...row1, ...row1];
 const loopRow2 = [...row2, ...row2];
 
@@ -65,11 +93,21 @@ function ProjectCard({ project }) {
       rel="noopener noreferrer"
       className="group relative shrink-0 w-[280px] h-[168px] md:w-[400px] md:h-60 rounded-2xl overflow-hidden border border-white/5 block opacity-50 hover:opacity-90 transition-opacity duration-500"
     >
-      <img
-        src={project.image}
-        alt={project.title}
-        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-      />
+      {project.title === 'TALA' ? (
+        <div className="w-full h-full bg-zinc-900 flex items-center justify-center transition-transform duration-700 group-hover:scale-[1.03]">
+          <span className="text-3xl md:text-5xl font-bold tracking-tighter text-white">TALA</span>
+        </div>
+      ) : (
+        <div className="w-full h-full relative flex items-center justify-center bg-zinc-900 overflow-hidden">
+          <div className={`${project.needsWhiteBg ? 'bg-white p-6 md:p-10 rounded-2xl' : ''} transition-transform duration-700 group-hover:scale-[1.03] flex items-center justify-center`}>
+            <img
+              src={project.image}
+              alt={project.title}
+              className={`${project.needsWhiteBg ? 'w-24 h-24 md:w-32 md:h-32 object-contain' : 'w-full h-full object-cover absolute inset-0'}`}
+            />
+          </div>
+        </div>
+      )}
       {/* Subtle dark overlay */}
       <div className="absolute inset-0 bg-black/20" />
       {/* Hover title overlay */}
@@ -95,7 +133,7 @@ export default function Work() {
       </div>
 
       {/* Header */}
-      <div className="text-center max-w-4xl mx-auto mb-16 px-6 relative z-20">
+      <ScrollReveal className="text-center max-w-4xl mx-auto mb-16 px-6 relative z-20">
         <p className="text-zinc-500 uppercase text-sm tracking-widest">Our Work</p>
         <h2 className="text-white/80 text-5xl md:text-7xl font-bold tracking-tight mt-4">
           Architecting the Future, One Line at a Time.
@@ -103,35 +141,35 @@ export default function Work() {
         <p className="text-zinc-400 mt-5 text-base md:text-lg leading-relaxed">
           A selection of products we've designed, built, and shipped.
         </p>
-      </div>
+      </ScrollReveal>
 
       {/* Scroll Rows */}
       <div className="space-y-6">
         {/* Row 1 — left to right */}
-        <div className="overflow-hidden">
+        <ScrollReveal direction="left" duration={1} className="overflow-hidden">
           <motion.div
             className="flex gap-4 md:gap-6 w-max"
             animate={{ x: ['0%', '-50%'] }}
-            transition={{ repeat: Infinity, duration: 28, ease: 'linear' }}
+            transition={{ repeat: Infinity, duration: 40, ease: 'linear' }}
           >
             {loopRow1.map((project, i) => (
               <ProjectCard key={i} project={project} />
             ))}
           </motion.div>
-        </div>
+        </ScrollReveal>
 
         {/* Row 2 — right to left */}
-        <div className="overflow-hidden">
+        <ScrollReveal direction="right" duration={1} className="overflow-hidden">
           <motion.div
             className="flex gap-4 md:gap-6 w-max"
             animate={{ x: ['-50%', '0%'] }}
-            transition={{ repeat: Infinity, duration: 28, ease: 'linear' }}
+            transition={{ repeat: Infinity, duration: 40, ease: 'linear' }}
           >
             {loopRow2.map((project, i) => (
               <ProjectCard key={i} project={project} />
             ))}
           </motion.div>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );
